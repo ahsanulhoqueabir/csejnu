@@ -1,0 +1,13 @@
+# example netlify.toml
+[build]
+  command = "node index.js"
+  functions = "functions"
+  publish = ""
+
+[[plugins]]
+package = "@netlify/plugin-scheduled-functions"
+
+
+[functions."jnunotice"]
+  schedule = "0 */2 * * *"
+
