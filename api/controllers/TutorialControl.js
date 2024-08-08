@@ -106,7 +106,6 @@ const courseBased = async (req, res) => {
     let response = "";
     // const query = "Introduction-to-Statistic-and-Probability";
     const pre = req.query.name.replace(/--+/g, "-").replace(/-([^-])/g, " $1");
-    console.log(pre);
     const courseID = await courses.findOne({ CourseTitle: pre });
     const classes = await tutorials.find(
       {

@@ -34,7 +34,7 @@ const Drawer = () => {
         <div>
           <Link>
             <img
-              className="h-20"
+              className="h-12 lg:h-20"
               src={getImage("logo", "batchlogo.svg")}
               alt=""
             />
@@ -48,7 +48,7 @@ const Drawer = () => {
                 role="button"
                 className=" avatar focus:outline-none"
               >
-                <div className="w-10 rounded-full border-[1px] border-teal-200">
+                <div className="size-7 lg:size-10 rounded-full border-[1px] border-teal-200">
                   <img
                     title={user.displayName}
                     alt="User Name"

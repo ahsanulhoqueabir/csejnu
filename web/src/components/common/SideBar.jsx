@@ -1,17 +1,19 @@
-import { FaTh } from "react-icons/fa";
+import { FaAngleLeft, FaTh, FaXRay } from "react-icons/fa";
 import GetIcon from "../../utility/icons";
 import { Link } from "react-router-dom";
 import useRole from "../../hooks/useRole";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 const SideBar = () => {
   const { loader, role } = useRole();
+  const [isChecked, setChecked] = useState(false);
   const { user } = useAuth();
   const ref = useRef(null);
   const handleRouteChange = () => {
     if (ref.current) {
       ref.current.checked = false;
+      setChecked(false);
     }
   };
 
@@ -26,7 +28,12 @@ const SideBar = () => {
       <div className="drawer-content ">
         {/* Page content here */}
         <label htmlFor="my-drawer" className=" drawer-button cursor-pointer">
-          <FaTh className={`size-8 `} />
+          <FaTh
+            onClick={() => {
+              setChecked(true);
+            }}
+            className={`size-4 lg:size-8 `}
+          />
         </label>
       </div>
       <div className="drawer-side">
@@ -34,8 +41,21 @@ const SideBar = () => {
           htmlFor="my-drawer"
           aria-label="close sidebar"
           className="drawer-overlay"
+          onClick={() => {
+            setChecked(false);
+          }}
         ></label>
-        <ul className="menu select-none bg-base-200 text-base-content min-h-full overflow-y-auto  w-72 p-4">
+        {isChecked && (
+          <div className=" fixed border border-info-content cursor-pointer rounded-lg left-[280px] z-[1250] top-2 text-3xl">
+            <FaAngleLeft
+              onClick={() => {
+                ref.current.checked = false;
+                setChecked(false);
+              }}
+            />
+          </div>
+        )}
+        <ul className="menu select-none   h-full overflow-auto grid  w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black">
           {/* In General Route */}
           {routes.map((route, index) => {
             {

@@ -26,6 +26,7 @@ import AcademicRoutes from "./router/AcademicRoute.jsx";
 import AdminRoute from "./router/AdminRoute.jsx";
 import UserDetailsRoute from "./router/UserDetailsRoute.jsx";
 import PageNotFound from "./pages/Shared/PageNotFound.jsx";
+import Editor from "./pages/Editor/Editor.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -87,6 +88,10 @@ const route = createBrowserRouter([
       {
         path: "not-authorized",
         element: <NotAuthorized />,
+      },
+      {
+        path: "editor",
+        element: <Editor />,
       },
     ],
   },

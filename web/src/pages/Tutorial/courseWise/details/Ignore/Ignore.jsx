@@ -3,6 +3,7 @@ import React from "react";
 const Ignore = () => {
   return (
     <div
+      className=" list-disc "
       dangerouslySetInnerHTML={{
         __html: html,
       }}
