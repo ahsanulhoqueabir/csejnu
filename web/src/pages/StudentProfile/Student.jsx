@@ -1,18 +1,5 @@
-import {
-  FaEnvelopeCircleCheck,
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaLocationDot,
-  FaLocationPin,
-  FaSquarePollVertical,
-  FaYoutube,
-} from "react-icons/fa6";
-import { FaPhoneAlt } from "react-icons/fa";
 import "../StudentProfile/StudentCard.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Education from "./Sections/Education";
 import Contact from "./Sections/Contact";
 
@@ -64,11 +51,12 @@ const Student = ({ item }) => {
             <div
               className="card-desc text-info-content first-letter:text-7xl first-letter:font-bold first-letter:text-info-content
   first-letter:mr-3 first-letter:float-left"
-            >
-              {personal.about
-                ? personal.about
-                : " A CSE undergraduate with a passion for problem solving and web development. Eager to learn and grow, actively participates in coding competitions, hones my skills in web technologies, and maintains a portfolio to showcase my projects."}
-            </div>
+              dangerouslySetInnerHTML={{
+                __html: personal.about
+                  ? personal.about
+                  : " A CSE undergraduate with a passion for problem solving and web development. Eager to learn and grow, actively participates in coding competitions, hones my skills in web technologies, and maintains a portfolio to showcase my projects.",
+              }}
+            ></div>
           </div>
         </div>
         <div

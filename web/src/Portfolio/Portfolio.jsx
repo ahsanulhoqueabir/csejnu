@@ -78,11 +78,14 @@ const Portfolio = () => {
                   <FaUser className="h-5 lg:h-20 text-xl lg:text-4xl" />
                   <p>ABOUT ME</p>
                 </div>
-                <p className="text-lg text-justify leading-8 pr-2 lg:pr-0 indent-5">
-                  {personal?.about
-                    ? personal?.about
-                    : "As a Computer Science & Engineering undergraduate have interest in competitive programming and Web Development, I possess an in-depth proficiency in MS Office applications. My passion for problem-solving and coding fuels my drive to excel in programming contests, where I constantly push boundaries to find creative solutions. My innovative vision allows me to approach challenges with a fresh perspective, seeking novel ways to optimize processes and enhance user experiences. With a strong foundation in technology and a thirst for continuous learning, I am committed to making a positive impact in the world of technology and beyond."}
-                </p>
+                <p
+                  className="text-lg text-justify leading-8 pr-2 lg:pr-0 indent-5"
+                  dangerouslySetInnerHTML={{
+                    __html: personal?.about
+                      ? personal?.about
+                      : "As a Computer Science & Engineering undergraduate have interest in competitive programming and Web Development, I possess an in-depth proficiency in MS Office applications. My passion for problem-solving and coding fuels my drive to excel in programming contests, where I constantly push boundaries to find creative solutions. My innovative vision allows me to approach challenges with a fresh perspective, seeking novel ways to optimize processes and enhance user experiences. With a strong foundation in technology and a thirst for continuous learning, I am committed to making a positive impact in the world of technology and beyond.",
+                  }}
+                ></p>
               </div>
               {/* education  */}
               <div className="">

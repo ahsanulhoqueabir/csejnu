@@ -16,8 +16,10 @@ const adminRoute = require("./routes/adminspecial.js");
 const authRoute = require("./routes/auth.js");
 const jnuNoticeRoute = require("./routes/jnunotice.js");
 const commentRoute = require("./routes/comments.js");
+const pollRoute = require("./routes/poll.js");
 const dotenv = require("dotenv");
 const sendNotice = require("./utility/SendMails.js");
+
 dotenv.config();
 
 const app = express();
@@ -53,6 +55,7 @@ app.use("/api/v1/admin", adminRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/jnu", jnuNoticeRoute);
 app.use("/api/v1/comments", commentRoute);
+app.use("/api/v1/polls", pollRoute);
 
 app.post("/admin/sendNotice", async (req, res) => {
   try {

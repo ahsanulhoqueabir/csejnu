@@ -46,7 +46,7 @@ const SideBar = () => {
           }}
         ></label>
         {isChecked && (
-          <div className=" fixed border border-info-content cursor-pointer rounded-lg left-[280px] z-[1250] top-2 text-3xl">
+          <div className=" fixed border border-info-content cursor-pointer rounded-lg left-[240px] z-[1250] top-2 text-3xl">
             <FaAngleLeft
               onClick={() => {
                 ref.current.checked = false;
@@ -55,7 +55,11 @@ const SideBar = () => {
             />
           </div>
         )}
-        <ul className="menu select-none   h-full overflow-auto grid  w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black">
+        <ul
+          className={`menu select-none  h-full overflow-auto grid  w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
+            isChecked ? "pt-12" : ""
+          }`}
+        >
           {/* In General Route */}
           {routes.map((route, index) => {
             {

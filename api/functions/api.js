@@ -17,6 +17,7 @@ const adminRoute = require("../routes/adminspecial.js");
 const authRoute = require("../routes/auth.js");
 const jnuNoticeRoute = require("../routes/jnunotice.js");
 const commentRoute = require("../routes/comments.js");
+const pollRoute = require("../routes/poll.js");
 
 const dotenv = require("dotenv");
 const sendNotice = require("../utility/SendMails.js");
@@ -60,6 +61,7 @@ app.use("/.netlify/functions/api/v1/admin", adminRoute);
 app.use("/.netlify/functions/api/v1/auth", authRoute);
 app.use("/.netlify/functions/api/v1/jnu", jnuNoticeRoute);
 app.use("/.netlify/functions/api/v1/comments", commentRoute);
+app.use("/.netlify/functions/api/v1/polls", pollRoute);
 
 app.post("/.netlify/functions/api/admin/sendNotice", async (req, res) => {
   try {

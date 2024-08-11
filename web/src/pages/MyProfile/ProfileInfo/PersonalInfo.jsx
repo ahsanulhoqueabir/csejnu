@@ -2,25 +2,16 @@ import React, { useEffect, useState } from "react";
 import Headline from "../../../components/Headline";
 import ShowData from "../../../components/ShowData";
 import { FaEdit, FaUser } from "react-icons/fa";
-import logofacebook from "../../../assets/facebook.svg";
-import logoinstagram from "../../../assets/instagram.svg";
-import logolinkedin from "../../../assets/linkedin.svg";
-import logogithub from "../../../assets/github.svg";
-import logoyoutube from "../../../assets/youtube.svg";
-import logoweb from "../../../assets/web.svg";
-import logocodeforces from "../../../assets/codeforces.svg";
-import logocodechef from "../../../assets/codechef.svg";
-import logoleetcode from "../../../assets/leetcode.svg";
-import logohackerrank from "../../../assets/hackerrank.svg";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
-import usePrivateFetch from "../../../hooks/fetch/usePrivateFetch";
 import LoadingPage from "../../Shared/LoadingPage";
 import SMCP from "../../../utility/iconname";
 import GetIcon from "../../../utility/icons";
+import TextEditor from "../../Editor/TextEditor";
 
 const PersonalInfo = ({ info, setStudentData }) => {
+  const [newBio, setNewBio] = useState(info.personal?.about);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [isBioActive, setIsBioActive] = useState(false);
@@ -28,36 +19,51 @@ const PersonalInfo = ({ info, setStudentData }) => {
   const handleBioUpdate = () => {
     setIsBioActive(true);
   };
-  const updateDescription = (e) => {
-    e.preventDefault();
-    const newDescription = e.target.description.value;
-    const updatedData = {
-      "personal.about": newDescription,
-    };
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, update it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.put(
-          `/students/updateStudent?email=${user?.email}`,
-          updatedData
-        );
+  useEffect(() => {
+    if (newBio) {
+      // setStudentData((prev) => ({
+      //   ...prev,
+      //   personal: {
+      //     ...prev.personal,
+      //     about: newBio,
+      //   },
+      // }));
+      const updatedData = {
+        "personal.about": newBio,
+      };
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure
+            .put(`/students/updateStudent?email=${user?.email}`, updatedData)
+            .then((res) => {
+              // setStudentData((prev) => ({
+              //   ...prev,
+              //   personal: {
+              //     ...prev.personal,
+              //     about: newBio,
+              //   },
+              // }));
+            });
 
-        Swal.fire({
-          title: "Updated!",
-          text: "Your info has been updated.",
-          icon: "success",
-        });
-      }
-    });
-    setIsBioActive(false);
-  };
+          Swal.fire({
+            title: "Updated!",
+            text: "Your Bio has been updated.",
+            icon: "success",
+          });
+        }
+      });
+      setIsBioActive(false);
+    }
+  }, [newBio]);
+
   // if (loading) {
   //   return <LoadingPage />;
   // }
@@ -85,10 +91,10 @@ const PersonalInfo = ({ info, setStudentData }) => {
                 />
               </div>
               <div
-                data-aos="zoom-in-down"
-                data-aos-delay="250"
-                data-aos-duration="600"
-                data-aos-easing="ease-in-out"
+                // data-aos="zoom-in-down"
+                // data-aos-delay="250"
+                // data-aos-duration="600"
+                // data-aos-easing="ease-in-out"
                 className="pt-5 lg:pt-0 w-full"
               >
                 {info.personal?.name?.fullName && (
@@ -109,10 +115,10 @@ const PersonalInfo = ({ info, setStudentData }) => {
             </div>
             {info.personal?.about && (
               <div
-                data-aos="fade-up-rights"
-                data-aos-delay="250"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
+              // data-aos="fade-up-rights"
+              // data-aos-delay="50"
+              // data-aos-duration="100"
+              // data-aos-easing="ease-in-out"
               >
                 <div className="pt-5">
                   <h2 className="flex items-center gap-2 font-bold text-lg">
@@ -127,34 +133,32 @@ const PersonalInfo = ({ info, setStudentData }) => {
                   </h2>
                 </div>
                 {isBioActive ? (
-                  <form onSubmit={updateDescription}>
-                    <textarea
-                      className="w-full bg-secondary-content text-info-content p-2 border-2 border-gray-300 rounded-lg h-36 focus:outline-none focus:border-primary"
-                      defaultValue={info.personal?.about}
-                      name="description"
-                    ></textarea>
-                    <button className="px-5 py-1 bg-success rounded text-white text-lg capitalize">
-                      submit
-                    </button>
-                  </form>
+                  <TextEditor
+                    setNewText={setNewBio}
+                    defaultText={info.personal?.about}
+                  />
                 ) : (
-                  <p>{info.personal?.about}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: info.personal?.about,
+                    }}
+                  ></div>
                 )}
               </div>
             )}
             <div
-              data-aos="fade-up-right
-                  "
-              data-aos-delay="250"
-              data-aos-duration="1000"
-              data-aos-easing="ease-in-out"
+              // data-aos="fade-up-right
+              //     "
+              // data-aos-delay="50"
+              // data-aos-duration="100"
+              // data-aos-easing="ease-in-out"
               className="pt-5 grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8"
             ></div>
             <div
-              data-aos="zoom-in-down"
-              data-aos-delay="250"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
+              // data-aos="zoom-in-down"
+              // data-aos-delay="50"
+              // data-aos-duration="100"
+              // data-aos-easing="ease-in-out"
               className="pt-5"
             >
               <h2 className="text-lg font-bold">Social Link:</h2>

@@ -53,7 +53,10 @@ const getAll = async (req, res) => {
       }
     )
       .skip(skip)
-      .limit(parseInt(limit));
+      .limit(parseInt(limit))
+      .sort({
+        date: -1,
+      });
     res.send(data);
   } catch (err) {
     res.send({

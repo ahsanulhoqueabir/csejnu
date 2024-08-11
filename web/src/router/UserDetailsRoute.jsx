@@ -1,6 +1,6 @@
 import EditInfo from "../pages/MyProfile/Edit/EditInfo";
 import UserProfile from "../pages/MyProfile/ProfileDetails/UserProfile";
-import Update from "../pages/MyProfile/Update/Update";
+import Update from "../pages/MyProfile/Edit/Update";
 import UpdateInfo2 from "../pages/MyProfile/UpdateInfo/UpdateInfo2";
 import MyNotes from "../pages/Note/MyNotes";
 import UpdateNotes from "../pages/Note/UpdateNotes";

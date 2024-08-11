@@ -1,11 +1,15 @@
 const Comments = require("../models/comments");
 const Tutorial = require("../models/Tutorial");
+const Students = require("../models/Student");
 
 const add = async (req, res) => {
   try {
     const { user, comment: Comment, thread, tutorial } = req.body;
+    const student = await Students.findOne({
+      "personal.email": user,
+    });
     const new_comment = {
-      user,
+      user: student._id,
       comment: Comment,
       thread,
     };
@@ -22,9 +26,15 @@ const add = async (req, res) => {
         },
       });
     }
+    const response = await Comments.findById(comment._id)
+      .populate("user", {
+        "personal.name": 1,
+        "personal.photo": 1,
+      })
+      .populate("tutorial");
     res.send({
       message: "Added",
-      comment: comment,
+      comment: response,
     });
   } catch (err) {
     res.send({
@@ -80,7 +90,7 @@ const Content = async (req, res) => {
         },
       })
       .sort({
-        createdAt: 1,
+        createdAt: -1,
       });
     const video = await Tutorial.findById(id, {
       topic: 1,

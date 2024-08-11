@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Banner from "../../../components/Banner";
 import Personal from "./Fields/Personal";
-import LoadingPage from "../../../pages/Shared/LoadingPage";
-import ErrorPage from "../../../pages/Shared/ErrorPage";
+import LoadingPage from "../../Shared/LoadingPage";
+import ErrorPage from "../../Shared/ErrorPage";
 import useUserdata from "../../../hooks/fetch/useUserdata";
 import Social from "./Fields/Social/Social";
 import "./update.css";
@@ -39,7 +39,7 @@ const Update = () => {
           />
         ))}
 
-        <div className="pt-10 px-10">{element}</div>
+        <div className="pt-3 lg:px-10">{element}</div>
       </div>
     </div>
   );

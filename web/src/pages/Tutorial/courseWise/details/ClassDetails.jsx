@@ -29,7 +29,7 @@ const ClassDetails = () => {
     <div className="px-5 lg:px-28 py-10 grid md:flex gap-7">
       <Class item={data.content} />
       <div className="md:w-[40%]">
-        <Comments comments={data.comments} />
+        <Comments tutorial={data.content} comments={data.comments} />
       </div>
     </div>
   );

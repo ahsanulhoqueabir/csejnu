@@ -27,6 +27,7 @@ import AdminRoute from "./router/AdminRoute.jsx";
 import UserDetailsRoute from "./router/UserDetailsRoute.jsx";
 import PageNotFound from "./pages/Shared/PageNotFound.jsx";
 import Editor from "./pages/Editor/Editor.jsx";
+import TextEditor from "./pages/Editor/TextEditor.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -91,7 +92,7 @@ const route = createBrowserRouter([
       },
       {
         path: "editor",
-        element: <Editor />,
+        element: <TextEditor />,
       },
     ],
   },
