@@ -24,10 +24,11 @@ export default SocialLink;
 
 const Account = ({ profile }) => {
   const info = SMCP[profile.platform];
-  const regex = /^https?:\/\/www\./;
+  const regex = /^https?:\/./;
   const url = info.base.replace(regex, "");
+  const link = url + (profile.link?.trim() || profile.handle?.trim());
   return (
-    <li className="flex items-center gap-4">
+    <li className="flex items-center gap-2 w-full text-wrap">
       <a
         href={`${info.base}${profile.link?.trim() || profile.handle?.trim()}`}
         target="blank"
@@ -35,10 +36,7 @@ const Account = ({ profile }) => {
       >
         <GetIcon icon={`${info.icon.trim()}`} lib={info.pack} />
       </a>
-      <p>
-        {url}
-        {profile.link?.trim() || profile.handle?.trim()}
-      </p>
+      <p className="">{link}</p>
     </li>
   );
 };

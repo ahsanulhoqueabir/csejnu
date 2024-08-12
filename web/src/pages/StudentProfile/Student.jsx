@@ -14,30 +14,18 @@ const Student = ({ item }) => {
     <div
       className={`Card bg-secondary-content text-info-content max-w-[450px] ${
         activeSection == "#about" ? "is-activee " : " "
-      }`}
+      } h-[460px]`}
       id="card"
       data-state={activeSection}
     >
       {/* card header ---------------- */}
-      <div className="card-header text-info-content">
-        {/* <div className="card-cover bg-gradient-to-r from-teal-400 from-10% via-sky-200 via-50% to-teal-400 to-10%"></div> */}
-        <div className="card-cover student-header"></div>
-        <img
-          className="card-avatar myBGimg object-cover object-center"
-          src={
-            personal.photo
-              ? personal.photo
-              : personal.gender === "F"
-              ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
-              : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
-          }
-          alt={personal.name.nickname}
-        />
-        <h1 className="card-fullname pb-3 uppercase">
-          {personal.name.fullName}{" "}
-        </h1>
-        <h2 className="card-jobtitle">CSE Undergrad</h2>
-      </div>
+      {activeSection === "#about" ? (
+        <AboutHeader id={id} personal={personal} />
+      ) : (
+        <Header id={id} personal={personal} />
+      )}
+      {/* <AboutHeader id={id} personal={personal} /> */}
+
       {/* card main part --------------- */}
       <div className="card-main text-info-content">
         <div
@@ -107,3 +95,95 @@ const Student = ({ item }) => {
 };
 
 export default Student;
+
+const Header = ({ personal, id }) => {
+  return (
+    <div className=" relative h-16">
+      <div className=" h-20 rounded-b-xl student-header"></div>
+      <div className="py-3 px-5 flex items-center">
+        <div>
+          <img
+            onClick={() => document.getElementById(id).showModal()}
+            className="rounded-full absolute top-2 size-12 myBGimg object-cover object-center shadow shadow-white"
+            src={
+              personal.photo
+                ? personal.photo
+                : personal.gender === "F"
+                ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
+                : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
+            }
+            alt={personal.name.nickname}
+          />
+        </div>
+        <div>
+          <h1 className="absolute top-3 left-20 font-semibold  uppercase">
+            {personal.name.fullName}{" "}
+          </h1>
+          <h2 className="absolute left-20 top-8 font-medium">CSE Undergrad</h2>
+        </div>
+      </div>{" "}
+      {/* <hr className="border absolute top-[72px] border-info-content w-[92%] mx-5" /> */}
+      <dialog id={id} className="modal">
+        <div className="modal-box size-80 lg:size-96 p-0 shadow-md shadow-teal-200">
+          <img
+            className="size-80 lg:size-96 object-cover"
+            src={
+              personal?.photo
+                ? personal.photo
+                : personal?.gender === "F"
+                ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
+                : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
+            }
+            // alt={info.personal?.name?.nickname}
+          />{" "}
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button></button>
+        </form>
+      </dialog>
+    </div>
+  );
+};
+
+const AboutHeader = ({ personal, id }) => {
+  return (
+    <div className="card-header ">
+      <div className="card-cover student-header"></div>
+      <img
+        onClick={() => document.getElementById(id).showModal()}
+        className="card-avatar myBGimg object-cover object-center"
+        src={
+          personal.photo
+            ? personal.photo
+            : personal.gender === "F"
+            ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
+            : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
+        }
+        alt={personal.name.nickname}
+      />
+
+      <h1 className="card-fullname pb-3 uppercase">
+        {personal.name.fullName}{" "}
+      </h1>
+      <h2 className="card-jobtitle">CSE Undergrad</h2>
+      <dialog id={id} className="modal">
+        <div className="modal-box size-80 lg:size-96 p-0 shadow-md shadow-teal-200">
+          <img
+            className="size-80 lg:size-96 object-cover"
+            src={
+              personal?.photo
+                ? personal.photo
+                : personal?.gender === "F"
+                ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
+                : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
+            }
+            // alt={info.personal?.name?.nickname}
+          />{" "}
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button></button>
+        </form>
+      </dialog>
+    </div>
+  );
+};

@@ -17,6 +17,8 @@ const authRoute = require("./routes/auth.js");
 const jnuNoticeRoute = require("./routes/jnunotice.js");
 const commentRoute = require("./routes/comments.js");
 const pollRoute = require("./routes/poll.js");
+const DeptRoute = require("./routes/departmentR.js");
+const facultyRoute = require("./routes/facultyR.js");
 const dotenv = require("dotenv");
 const sendNotice = require("./utility/SendMails.js");
 
@@ -56,6 +58,8 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/jnu", jnuNoticeRoute);
 app.use("/api/v1/comments", commentRoute);
 app.use("/api/v1/polls", pollRoute);
+app.use("/api/v1/departments", DeptRoute); // new
+app.use("/api/v1/faculty", facultyRoute); // new
 
 app.post("/admin/sendNotice", async (req, res) => {
   try {

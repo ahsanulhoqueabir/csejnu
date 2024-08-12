@@ -1,6 +1,6 @@
 const Education = ({ education }) => {
   return (
-    <div className="card-content">
+    <div className="card-content ">
       <div className="card-subtitle">EDUCATION TIMELINE</div>
       <div className="card-timeline">
         {education.map((data, index) => (

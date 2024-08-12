@@ -9,6 +9,8 @@ import usePublicFetch from "../hooks/fetch/usePublicFetch";
 import LoadingPage from "../pages/Shared/LoadingPage";
 import { useEffect, useState } from "react";
 import PageNotFound from "../pages/Shared/PageNotFound";
+import Timeline from "./Timeline";
+import Swal from "sweetalert2";
 
 const Portfolio = () => {
   const { id } = useParams();
@@ -34,6 +36,18 @@ const Portfolio = () => {
     return <PageNotFound />;
   }
   const { personal, addressInfo, batch, education, role } = info;
+  const showImage = () => {
+    // document.getElementById("myimage").showModal();
+    <dialog id="myimage" className="modal">
+      <div className="modal-box">
+        <h3 className="font-bold text-lg">Hello!</h3>
+        <p className="py-4">Press ESC key or click outside to close</p>
+      </div>
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>;
+  };
 
   return (
     <>
@@ -51,6 +65,7 @@ const Portfolio = () => {
             {/* profile card  */}
             <div className="border-l-[40px] lg:border-l-[70px] flex items-center text-white gap-5  border-solid border-cyan-500 my-10 lg:mr-10	px-5  py-10 bg-teal-900">
               <img
+                onClick={() => document.getElementById("myimage").showModal()}
                 className="borderR  h-16 lg:h-28 "
                 src={
                   personal?.photo
@@ -61,6 +76,25 @@ const Portfolio = () => {
                 }
                 alt={info.personal?.name?.nickname}
               />
+              {/* image modal  */}
+              <dialog id="myimage" className="modal ">
+                <div className="modal-box size-80  lg:size-96 p-0">
+                  <img
+                    className="size-80 lg:size-96 object-cover"
+                    src={
+                      personal?.photo
+                        ? personal.photo
+                        : personal?.gender === "F"
+                        ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
+                        : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
+                    }
+                    alt={info.personal?.name?.nickname}
+                  />{" "}
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                  <button></button>
+                </form>
+              </dialog>
               <div>
                 <h1 className="lg:text-4xl font-bold uppercase">
                   {personal?.name?.fullName}
@@ -92,7 +126,8 @@ const Portfolio = () => {
                 <p className="flex gap-3 items-center text-3xl font-bold">
                   Education
                 </p>
-                <EduTimeline academics={education} />
+                {/* <EduTimeline academics={education} /> */}
+                <Timeline academics={education} />
               </div>
             </div>
           </div>

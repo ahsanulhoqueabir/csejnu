@@ -23,7 +23,7 @@ export default {
         darrk: {
           primary: "#cf00ff",
           "primary-content": "#1F2937",
-          secondary: "#539500",
+          secondary: "#B9B4C7",
           "secondary-content": "#27374D",
           accent: "#e9ffff",
           "accent-content": "#0B2447",
@@ -50,7 +50,7 @@ export default {
         lightt: {
           primary: "#14e0dd",
           "primary-content": "#f3f4f6",
-          secondary: "#0044ee",
+          secondary: "#0A6847",
           "secondary-content": "#DDE6ED",
           accent: "#e9ffff",
           "accent-content": "#91DDCF",

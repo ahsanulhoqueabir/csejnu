@@ -21,30 +21,25 @@
 .myBGimg {
   background-image: url("https://i.ibb.co/tHm4Dx8/1.png");
 }
-.Card[data-state="#about"] {
+/* .Card[data-state="#about"] {
   height: 450px;
   text-align: justify;
   .card-main {
     padding-top: 0;
   }
-}
+} */
 
-.Card[data-state="#contact"] {
+/* .Card[data-state="#contact"] {
   height: 450px;
 }
 
 .Card[data-state="#education"] {
   height: 450px;
-}
+} */
 
 .Card.is-active {
   .card-header {
     height: 80px;
-  }
-
-  .card-cover {
-    height: 100px;
-    /* top: -0px; */
   }
 
   .card-avatar {

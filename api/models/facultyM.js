@@ -1,18 +1,31 @@
-// import mongoose from "mongoose";
 const mongoose = require("mongoose");
-const studentSchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const facultySchema = new Schema(
   {
-    id: { type: String, required: true },
-    batch: { type: String, required: true }, // B210305
-    role: { type: String, default: "student" },
+    dept_id: {
+      type: String, // D0305 for CSE
+      required: true,
+      default: "D0305",
+    },
     department: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Department",
     },
+    teacher_id: {
+      type: String,
+    },
+    position: {
+      type: String,
+    },
     personal: {
       name: {
-        fullName: { type: String },
-        nickname: { type: String },
+        fullName: {
+          type: String,
+        },
+        nickname: {
+          type: String,
+        },
       },
       about: { type: String },
       blood: { type: String },
@@ -20,7 +33,7 @@ const studentSchema = new mongoose.Schema(
       birthday: { type: Date },
       religion: { type: String },
       photo: { type: String },
-      email: { type: String, required: true, unique: true },
+      email: { type: String, required: true, unique: true, trim: true },
       phone: { type: String },
       portfolio: { type: String },
       resume: { type: String },
@@ -32,6 +45,47 @@ const studentSchema = new mongoose.Schema(
       eyeSight: { type: String },
       hairColor: { type: String },
     },
+    social: [
+      {
+        platform: { type: String }, // facebook,instagram,linkedin,
+        username: { type: String },
+      },
+    ],
+    profiles: [
+      {
+        title: { type: String },
+        link: { type: String },
+        description: { type: String },
+      },
+    ],
+    awards: [
+      {
+        title: { type: String, required: true },
+        photo: { type: String },
+        date: { type: Date },
+        organization: { type: String },
+        description: { type: String },
+      },
+    ],
+    publications: [
+      {
+        title: { type: String },
+        url: { type: String },
+        date: { type: Date },
+        publisher: { type: String },
+        description: { type: String },
+      },
+    ],
+    certificates: [
+      {
+        title: { type: String, required: true },
+        url: { type: String },
+        issuingAuthority: { type: String },
+        date: { type: Date },
+        year: { type: String },
+        description: { type: String },
+      },
+    ],
     family: [
       {
         name: { type: String },
@@ -81,57 +135,38 @@ const studentSchema = new mongoose.Schema(
         degree: { type: String }, // BSc,SSC,HSC
       },
     ],
-    social: [
+    experience: [
       {
-        platform: { type: String }, // facebook,instagram,linkedin,
-        username: { type: String },
+        role: { type: String },
+        institution: { type: String },
+        start: { type: Date },
+        end: { type: Date },
+        description: { type: String },
       },
     ],
-    codingProfile: [
+    membership: [
       {
-        platform: { type: String }, // codeforces,codechef,leetcode
-        handle: { type: String },
+        position: { type: String },
+        organization: { type: String },
+        start: { type: Date },
+        end: { type: Date },
+        description: { type: String },
       },
     ],
-    skills: [{ type: String }],
-    hobby: [{ type: String }],
-    achievements: {
-      awards: [
-        {
-          title: { type: String, required: true },
-          photo: { type: String },
-          date: { type: Date },
-          organization: { type: String },
-          description: { type: String },
-        },
-      ],
-      publications: [
-        {
-          title: { type: String, required: true },
-          url: { type: String, required: true },
-          date: { type: Date },
-          publisher: { type: String },
-        },
-      ],
-      certificates: [
-        {
-          title: { type: String, required: true },
-          url: { type: String, required: true },
-          issuingAuthority: { type: String },
-          date: { type: Date },
-        },
-      ],
-    },
-    results: [
+    scholarships: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Result",
+        title: { type: String },
+        organization: { type: String },
+        start: { type: Date },
+        end: { type: Date },
+        description: { type: String },
       },
     ],
   },
+
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Student", studentSchema, "cse13batch");
+module.exports = mongoose.model("Faculty", facultySchema);

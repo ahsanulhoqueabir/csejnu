@@ -3,7 +3,7 @@ const SMCP = {
     name: "Facebook",
     icon: "FaFacebook ",
     pack: "fa",
-    base: "https://www.facebook.com/",
+    base: "https://facebook.com/",
   },
   github: {
     name: "Github",
@@ -15,7 +15,7 @@ const SMCP = {
     name: "Linkedin",
     icon: "FaLinkedin ",
     pack: "fa",
-    base: "https://www.linkedin.com/in/",
+    base: "https://linkedin.com/in/",
   },
   codeforces: {
     name: "Codeforces",
@@ -27,13 +27,13 @@ const SMCP = {
     name: "Youtube",
     icon: "FaYoutube ",
     pack: "fa6",
-    base: "https://www.youtube.com/",
+    base: "https://youtube.com/",
   },
   instagram: {
     name: "Instagram",
     icon: "FaInstagram ",
     pack: "fa6",
-    base: "https://www.instagram.com/",
+    base: "https://instagram.com/",
   },
   stackoverflow: {
     name: "Stackoverflow",
@@ -81,37 +81,37 @@ const SMCP = {
     name: "Snapchat",
     icon: "FaSnapchat ",
     pack: "fa",
-    base: "https://www.snapchat.com/",
+    base: "https://snapchat.com/",
   },
   pinterest: {
     name: "Pinterest",
     icon: "FaPinterest ",
     pack: "fa",
-    base: "https://www.pinterest.com/",
+    base: "https://pinterest.com/",
   },
   tumblr: {
     name: "Tumblr",
     icon: "FaTumblr ",
     pack: "fa",
-    base: "https://www.tumblr.com/",
+    base: "https://tumblr.com/",
   },
   reddit: {
     name: "Reddit",
     icon: "FaReddit ",
     pack: "fa",
-    base: "https://www.reddit.com/",
+    base: "https://reddit.com/",
   },
   quora: {
     name: "Quora",
     icon: "FaQuora ",
     pack: "fa",
-    base: "https://www.quora.com/",
+    base: "https://quora.com/",
   },
   behance: {
     name: "Behance",
     icon: "FaBehance ",
     pack: "fa",
-    base: "https://www.behance.net/",
+    base: "https://behance.net/",
   },
   dribbble: {
     name: "Dribbble",
@@ -141,7 +141,7 @@ const SMCP = {
     name: "Codechef",
     icon: "FaHatCowboy",
     pack: "fa6",
-    base: "https://www.codechef.com/users/",
+    base: "https://codechef.com/users/",
   },
   leetcode: {
     name: "Leetcode",
@@ -153,7 +153,7 @@ const SMCP = {
     name: "Hackerrank",
     icon: "FaHackerrank ",
     pack: "fa6",
-    base: "https://www.hackerrank.com/",
+    base: "https://hackerrank.com/",
   },
   vjudge: {
     name: "Vjudge",
@@ -171,7 +171,7 @@ const SMCP = {
     name: "Hackerearth",
     icon: "FaCode ",
     pack: "fa6",
-    base: "https://www.hackerearth.com/",
+    base: "https://hackerearth.com/",
   },
 };
 

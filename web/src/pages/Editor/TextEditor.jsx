@@ -99,6 +99,7 @@ const TextEditor = ({ setNewText, defaultText = "" }) => {
 
     // console.log(html);
   };
+  // console.log();
   return (
     <div className=" mt-2">
       <div className="w-full border p-3  rounded">
@@ -168,7 +169,11 @@ const TextEditor = ({ setNewText, defaultText = "" }) => {
         </div>
       </div>
       <button
-        className="btn hover:border hover:border-info-content outline-transparent transition duration-700 ease-in-out  mt-4"
+        className={`btn hover:border hover:border-info-content outline-transparent transition duration-700 ease-in-out  mt-4 ${
+          stateToHTML(editorState.getCurrentContent()) === "<p><br></p>"
+            ? "cursor-not-allowed disabled"
+            : ""
+        }`}
         onClick={getHTMLContent}
       >
         Submit{" "}

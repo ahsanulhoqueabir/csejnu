@@ -1,4 +1,3 @@
-import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import {
   FaEnvelopeCircleCheck,
@@ -8,12 +7,11 @@ import {
 import { Link } from "react-router-dom";
 import SMCP from "../../../utility/iconname";
 import GetIcon from "../../../utility/icons";
-
 const Contact = ({ addressInfo, id, social, codingProfile, personal }) => {
   const { current } = addressInfo;
   const allProfile = [...social, ...codingProfile];
   return (
-    <div className="card-content">
+    <div className="card-content ">
       <div className="card-subtitle">CONTACT</div>
       <div className="mt-5 flex flex-col gap-5 text-lg">
         <div className=" flex gap-3 ">

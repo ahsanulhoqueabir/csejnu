@@ -1,6 +1,6 @@
 import { FaAngleLeft, FaTh, FaXRay } from "react-icons/fa";
 import GetIcon from "../../utility/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -56,7 +56,7 @@ const SideBar = () => {
           </div>
         )}
         <ul
-          className={`menu select-none  h-full overflow-auto grid  w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
+          className={`menu select-none  h-full overflow-auto grid w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
             isChecked ? "pt-12" : ""
           }`}
         >
@@ -309,18 +309,20 @@ const AdminRoute = [
 
 const BasicRoute = ({ data, handleRouteChange }) => {
   return (
-    <li onClick={handleRouteChange}>
-      <Link to={data.path}>{data.name}</Link>
+    <li className=" " onClick={handleRouteChange}>
+      <NavLink className="" to={data.path}>
+        {data.name}
+      </NavLink>
     </li>
   );
 };
 const ParentRoute = ({ data, handleRouteChange }) => {
   return (
     <li onClick={handleRouteChange}>
-      <Link to={data.path} className="text-xl font-semibold">
+      <NavLink to={data.path} className="text-xl font-semibold">
         <GetIcon className={""} icon={data.icon} lib={data.pack} />{" "}
         <span>{data.name}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };

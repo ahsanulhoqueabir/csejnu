@@ -17,7 +17,7 @@ function App() {
   //   sessionStorage.setItem("Anniversary", true);
   // }
   return (
-    <div className=" lg:w-full">
+    <div className=" lg:w-full selection:bg-teal-300 selection:text-black">
       {/* <MyNav /> */}
       <Drawer />
       {/* <SideBar /> */}
