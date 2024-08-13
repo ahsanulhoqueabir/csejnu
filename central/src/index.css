@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Changa:wght@200..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Grey+Qo&family=Jacquard+12&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: teal;
+}
+::-webkit-scrollbar-thumb {
+  background-color: aquamarine;
+  border-radius: 10px;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+body {
+  @apply selection:bg-teal-300 selection:text-black;
+}
+.borderR {
+  border-radius: 32% 68% 66% 34% / 40% 37% 63% 60%;
+  background-color: aquamarine;
+}
+.myText {
+  @apply animate-pulse bg-gradient-to-r from-teal-600 via-blue-300 to-rose-600 bg-clip-text text-transparent font-black font-mono transition duration-1000;
+}
+.revMyText {
+  @apply animate-[pulse_10s_ease-in-out_infinite]  bg-gradient-to-r from-rose-600 via-blue-300 to-teal-600 bg-clip-text text-transparent font-black font-mono;
+}
