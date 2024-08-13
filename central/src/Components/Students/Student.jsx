@@ -3,13 +3,27 @@ import SMCP from "../../../../web/src/utility/iconname";
 import { getImage } from "../../utilities/functions";
 import GetIcon from "../../utilities/Icon";
 import "./style.css";
+import { useEffect } from "react";
 
-const Student = ({ student }) => {
+const Student = ({ student, page, setPage }) => {
   const navigate = useNavigate();
+  useEffect(() => {
+    const observer = new IntersectionObserver((para) => {
+      if (para[0].isIntersecting) {
+        observer.unobserve(lastStd);
+        setPage(page + 1);
+      }
+    });
+
+    const lastStd = document.querySelector(".student-card:last-child");
+    if (lastStd) {
+      observer.observe(lastStd);
+    }
+  }, [student]);
   const { id, personal } = student;
   const social = [...student.social, ...student.codingProfile];
   return (
-    <div className="flex w-full  h-[550px] flex-col items-center justify-center  rounded-xl bg-accent-content p-4 shadow-lg text-info-content">
+    <div className="flex w-full student-card h-[550px] flex-col items-center justify-center  rounded-xl bg-accent-content p-4 shadow-lg text-info-content">
       {/* <div className="student-header card-cover"></div> */}
       <div className="group relative  ">
         <img
@@ -43,7 +57,9 @@ const Student = ({ student }) => {
         <span className="absolute bottom-3 right-0 h-5 w-5 animate-ping rounded-full bg-green-500"></span>
       </div>
       <div className="space-y-1 text-center pb-2">
-        <h1 className="text-2xl font-playwrite">{personal?.name?.fullName}</h1>
+        <h1 className="pt-2 lg:text-2xl font-playwrite">
+          {personal?.name?.fullName}
+        </h1>
         <p className="text-sm text-gray-400">CSE undergrad</p>
       </div>
 

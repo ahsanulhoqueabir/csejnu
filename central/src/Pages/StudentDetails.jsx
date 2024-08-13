@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/axios/useAxiosPublic";
 import { FaUser } from "react-icons/fa";
 import Timeline from "../Components/StudentDetails/Timeline";
@@ -8,21 +8,29 @@ import SocialLink from "../Components/StudentDetails/SocialLink";
 import Skills from "../Components/StudentDetails/Skills";
 import Languages from "../Components/StudentDetails/Languages";
 import { getImage } from "../utilities/functions.js";
+import LoadingPage from "../Shared/LoadingPage.jsx";
 const StudentDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(true);
   const [student, setStudent] = useState({});
   useEffect(() => {
     if (id) {
-      axiosPublic.get(`/students/profile/${id}`).then((res) => {
-        setStudent(res.data);
-        setLoading(false);
-      });
+      axiosPublic
+        .get(`/students/profile/${id}`)
+        .then((res) => {
+          setStudent(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+          navigate("/page-not-found");
+        });
     }
   }, [id]);
   if (loading) {
-    return <h1>Loading</h1>;
+    return <LoadingPage />;
   }
   const { personal, addressInfo, education, info } = student;
   return (

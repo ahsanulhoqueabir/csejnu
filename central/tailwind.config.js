@@ -38,7 +38,7 @@ export default {
           neutral: "#3d4451",
           "neutral-focus": "#2a2e37",
           "neutral-content": "#ffffff",
-          "base-100": "#EBF3E8",
+          "base-100": "#F7F6F2",
           "base-200": "#B5CFB7",
           "base-300": "#D1E9F6",
           "base-content": "#86A789",

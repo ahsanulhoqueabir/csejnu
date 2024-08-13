@@ -5,6 +5,9 @@ import MainLayout from "../layout/MainLayout";
 import Overview from "../Pages/Overview";
 import Students from "../Pages/Students";
 import StudentDetails from "../Pages/StudentDetails";
+import PageNotFound from "../Shared/PageNotFound";
+import LoadingPage from "../Shared/LoadingPage";
+import QueryPage from "../Pages/QueryPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +26,22 @@ export const router = createBrowserRouter([
       {
         path: "students/details/:id",
         element: <StudentDetails />,
+      },
+      {
+        path: "query-students",
+        element: <QueryPage />,
+      },
+      {
+        path: "error",
+        element: <ErrorPage />,
+      },
+      {
+        path: "page-not-found",
+        element: <PageNotFound />,
+      },
+      {
+        path: "loading-page",
+        element: <LoadingPage />,
       },
     ],
   },
