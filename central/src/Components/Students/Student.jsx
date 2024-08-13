@@ -50,7 +50,7 @@ const Student = ({ student }) => {
       {/* bio  */}
       <div className="h-[350px] overflow-y-auto no-scrollbar">
         <div
-          className="text-justify px-2 "
+          className="text-justify px-2 line-clamp-[8]	"
           dangerouslySetInnerHTML={{
             __html:
               personal?.about ||

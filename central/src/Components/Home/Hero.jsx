@@ -11,7 +11,7 @@ const Hero = () => {
         <h1 className="text-4xl font-bold">Computer Science & Engineering</h1>
         <h2 className="text-3xl font-black">Jagannath University</h2>
         <p
-          className="revMyText text-lg first-letter:text-7xl  first-letter:text-black first-letter:font-black
+          className="revMyText text-justify text-lg first-letter:text-7xl  first-letter:text-black first-letter:font-black
   first-letter:mr-3 first-letter:float-left select-none"
         >
           The Department of Computer Science and Engineering is one that

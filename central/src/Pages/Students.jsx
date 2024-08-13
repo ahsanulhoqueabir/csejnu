@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/axios/useAxiosPublic";
 import Student from "../Components/Students/Student";
+import CardLoading from "../Shared/loader/CardLoading";
 
 const Students = () => {
   const { batchid } = useParams();
@@ -23,7 +24,7 @@ const Students = () => {
     }
   }, [batchid]);
   if (loading) {
-    return <h1>Loading</h1>;
+    return <CardLoading />;
   }
   return (
     <div>

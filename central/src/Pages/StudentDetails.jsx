@@ -27,7 +27,7 @@ const StudentDetails = () => {
   const { personal, addressInfo, education, info } = student;
   return (
     <div>
-      <div className="-ml-5 lg:-ml-20 flex flex-col lg:flex-row lg:gap-6">
+      <div className="-ml-5 lg:-ml-20 flex flex-col lg:flex-row lg:gap-6 -mt-10">
         {/*------------------------------- left side -------------------------------------- */}
         <div className="lg:w-[60%]">
           {/* heading  */}
@@ -102,7 +102,11 @@ const StudentDetails = () => {
         </div>
         {/*------------------------------------ right side --------------------------------------- */}
         <div className="lg:w-[40%] -mr-5 lg:-mr-20 border-l-[30px] lg:border-l-0 border-teal-900 pt-10  lg:pt-32 lg:bg-accent-content pl-3 lg:pl-10">
-          <Contact addressInfo={addressInfo} contact={personal} />
+          <Contact
+            personal={personal}
+            addressInfo={addressInfo}
+            contact={personal}
+          />
           <SocialLink
             social={info?.social ? info.social : []}
             coding={info?.codingProfile ? info.codingProfile : []}

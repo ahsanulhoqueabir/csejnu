@@ -34,8 +34,8 @@ body {
   background-color: aquamarine;
 }
 .myText {
-  @apply animate-pulse bg-gradient-to-r from-teal-600 via-blue-300 to-rose-600 bg-clip-text text-transparent font-black font-mono transition duration-1000;
+  @apply animate-pulse bg-gradient-to-r from-teal-600 via-blue-300 to-rose-600 bg-clip-text text-transparent font-black font-philosopher transition duration-1000;
 }
 .revMyText {
-  @apply animate-[pulse_10s_ease-in-out_infinite]  bg-gradient-to-r from-rose-600 via-blue-300 to-teal-600 bg-clip-text text-transparent font-black font-mono;
+  @apply animate-[pulse_10s_ease-in-out_infinite]  bg-gradient-to-r from-rose-600 via-blue-500 to-teal-600 bg-clip-text text-transparent font-philosopher;
 }
