@@ -1,5 +1,4 @@
 import { FaUser } from "react-icons/fa";
-import EduTimeline from "./EduTimeline";
 import Contact from "./Contact";
 import SocialLink from "./SocialLink";
 import Skills from "./Skills";
@@ -10,7 +9,6 @@ import LoadingPage from "../pages/Shared/LoadingPage";
 import { useEffect, useState } from "react";
 import PageNotFound from "../pages/Shared/PageNotFound";
 import Timeline from "./Timeline";
-import Swal from "sweetalert2";
 
 const Portfolio = () => {
   const { id } = useParams();
@@ -37,7 +35,6 @@ const Portfolio = () => {
   }
   const { personal, addressInfo, batch, education, role } = info;
   const showImage = () => {
-    // document.getElementById("myimage").showModal();
     <dialog id="myimage" className="modal">
       <div className="modal-box">
         <h3 className="font-bold text-lg">Hello!</h3>
@@ -53,7 +50,7 @@ const Portfolio = () => {
     <>
       {data.length === 0 && <PageNotFound />}
       {data.length > 0 && (
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row lg:gap-6">
           {/*------------------------------- left side -------------------------------------- */}
           <div className="lg:w-[60%]">
             {/* heading  */}
@@ -113,7 +110,7 @@ const Portfolio = () => {
                   <p>ABOUT ME</p>
                 </div>
                 <p
-                  className="text-lg text-justify leading-8 pr-2 lg:pr-0 indent-5"
+                  className="text-lg text-justify leading-8 pr-5 lg:pr-0 indent-5"
                   dangerouslySetInnerHTML={{
                     __html: personal?.about
                       ? personal?.about
@@ -126,13 +123,12 @@ const Portfolio = () => {
                 <p className="flex gap-3 items-center text-3xl font-bold">
                   Education
                 </p>
-                {/* <EduTimeline academics={education} /> */}
                 <Timeline academics={education} />
               </div>
             </div>
           </div>
           {/*------------------------------------ right side --------------------------------------- */}
-          <div className="lg:w-[40%] pt-32 bg-secondary-content pl-10">
+          <div className="lg:w-[40%] border-l-[30px] lg:border-l-0 border-teal-900 pt-10  lg:pt-32 lg:bg-secondary-content pl-3 lg:pl-10">
             <Contact addressInfo={addressInfo} contact={personal} />
             <SocialLink
               social={info?.social ? info.social : []}

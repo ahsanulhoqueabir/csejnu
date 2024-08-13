@@ -11,7 +11,7 @@ const Contact = ({ addressInfo, id, social, codingProfile, personal }) => {
   const { current } = addressInfo;
   const allProfile = [...social, ...codingProfile];
   return (
-    <div className="card-content ">
+    <div className="card-content mt-8">
       <div className="card-subtitle">CONTACT</div>
       <div className="mt-5 flex flex-col gap-5 text-lg">
         <div className=" flex gap-3 ">
@@ -56,7 +56,9 @@ const Media = ({ profile }) => {
       <a
         className="underline animate-pulse"
         href={`${info.base && info.base}${
-          profile.link?.trim() || profile.handle?.trim()
+          profile.link?.trim() ||
+          profile.handle?.trim() ||
+          profile.username?.trim()
         }`}
       >
         <GetIcon

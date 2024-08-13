@@ -24,13 +24,14 @@ export default SocialLink;
 
 const Account = ({ profile }) => {
   const info = SMCP[profile.platform];
-  const regex = /^https?:\/./;
+  const regex = /^https?:\/\/www\./;
   const url = info.base.replace(regex, "");
-  const link = url + (profile.link?.trim() || profile.handle?.trim());
+  const link =
+    profile.link?.trim() || profile.handle?.trim() || profile.username?.trim();
   return (
     <li className="flex items-center gap-2 w-full text-wrap">
       <a
-        href={`${info.base}${profile.link?.trim() || profile.handle?.trim()}`}
+        href={`${info.base}${link}`}
         target="blank"
         className="p-2 bg-accent-content rounded-full"
       >

@@ -99,8 +99,8 @@ export default Student;
 const Header = ({ personal, id }) => {
   return (
     <div className=" relative h-16">
-      <div className=" h-20 rounded-b-xl student-header"></div>
-      <div className="py-3 px-5 flex items-center">
+      <div className=" add-card-cover student-header"></div>
+      <div className="py-3 px-5 flex items-center z-20">
         <div>
           <img
             onClick={() => document.getElementById(id).showModal()}
@@ -119,7 +119,9 @@ const Header = ({ personal, id }) => {
           <h1 className="absolute top-3 left-20 font-semibold  uppercase">
             {personal.name.fullName}{" "}
           </h1>
-          <h2 className="absolute left-20 top-8 font-medium">CSE Undergrad</h2>
+          <h2 className="absolute left-20 top-9 text-gray-500 font-medium text-xs">
+            CSE Undergrad
+          </h2>
         </div>
       </div>{" "}
       {/* <hr className="border absolute top-[72px] border-info-content w-[92%] mx-5" /> */}
@@ -177,7 +179,7 @@ const AboutHeader = ({ personal, id }) => {
                 ? "https://i.ibb.co/C09P0X4/pngwing-com.png"
                 : "https://i.ibb.co/kD4FgLv/graduate-icon-5.png"
             }
-            // alt={info.personal?.name?.nickname}
+            alt={personal?.name?.nickname}
           />{" "}
         </div>
         <form method="dialog" className="modal-backdrop">

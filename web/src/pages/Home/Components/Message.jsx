@@ -14,6 +14,8 @@ const Message = () => {
   useEffect(() => {
     axiosPublic.get("/messages").then((res) => {
       setMessage(res.data);
+      const pos = Math.floor(Math.random() * 40);
+      setMsg(res.data[pos].message);
       setLoading(false);
     });
   }, []);
