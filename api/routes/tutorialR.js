@@ -1,5 +1,5 @@
 const express = require("express");
-const tutorials = require("../controllers/TutorialControl");
+const tutorials = require("../controllers/TutorialC");
 const { verifyJWT } = require("../middleware/middleware");
 
 const router = express.Router();

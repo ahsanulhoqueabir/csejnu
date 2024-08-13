@@ -1,4 +1,4 @@
-const Notices = require("../models/jnunotice");
+const Notices = require("../models/jnunoticeM");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fetchTable = async (req, res) => {

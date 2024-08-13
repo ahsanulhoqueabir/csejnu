@@ -1,5 +1,5 @@
-const Result = require("../models/result.js");
-const Student = require("../models/Student.js");
+const Result = require("../models/resultM.js");
+const Student = require("../models/StudentM.js");
 
 const add = async (req, res) => {
   try {

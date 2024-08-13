@@ -1,6 +1,6 @@
-const notes = require("../models/Notes.js");
-const courses = require("../models/courseHistory.js");
-const Students = require("../models/Student.js");
+const notes = require("../models/NotesM.js");
+const courses = require("../models/courseM.js");
+const Students = require("../models/StudentM.js");
 
 const projection = {
   __v: 0,

@@ -1,4 +1,4 @@
-const qbank = require("../controllers/qbank.js");
+const qbank = require("../controllers/qbankC.js");
 const express = require("express");
 
 const router = express.Router();

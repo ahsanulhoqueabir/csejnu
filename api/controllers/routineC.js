@@ -1,4 +1,4 @@
-const Routine = require("../models/routine.js");
+const Routine = require("../models/routineM.js");
 
 const addClassRoutine = async (req, res) => {
   try {

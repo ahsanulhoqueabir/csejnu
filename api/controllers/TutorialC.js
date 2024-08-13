@@ -1,5 +1,5 @@
-const tutorials = require("../models/Tutorial.js");
-const courses = require("../models/courseHistory.js");
+const tutorials = require("../models/TutorialM.js");
+const courses = require("../models/courseM.js");
 
 const projection = {
   __v: 0,

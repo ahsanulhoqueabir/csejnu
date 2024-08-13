@@ -85,6 +85,7 @@ const studentSchema = new mongoose.Schema(
       {
         platform: { type: String }, // facebook,instagram,linkedin,
         username: { type: String },
+        link: { type: String },
       },
     ],
     codingProfile: [
@@ -134,4 +135,5 @@ const studentSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Student", studentSchema, "cse13batch");
+// module.exports = mongoose.model("Student", studentSchema, "cse13batch");
+module.exports = mongoose.model("Student", studentSchema);

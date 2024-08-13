@@ -1,4 +1,4 @@
-const courses = require("../models/courseHistory.js");
+const courses = require("../models/courseM.js");
 
 const addNew = async (req, res) => {
   const newCourse = new courses(req.body);

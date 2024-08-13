@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Poll = require("../controllers/poll");
+const Poll = require("../controllers/pollC");
 
 router.post("/create", Poll.createPoll);
 router.get("/all", Poll.getAllPolls);

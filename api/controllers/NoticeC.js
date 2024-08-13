@@ -1,5 +1,5 @@
-const Notices = require("../models/Notice.js");
-const courses = require("../models/courseHistory.js");
+const Notices = require("../models/NoticeM.js");
+const courses = require("../models/courseM.js");
 const { randomColor, Randomposition } = require("../utility/function.js");
 const projection = {
   __v: 0,

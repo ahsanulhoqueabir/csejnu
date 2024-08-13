@@ -1,4 +1,4 @@
-const Qbank = require("../models/qBank.js");
+const Qbank = require("../models/qBankM.js");
 
 const allQbank = async (req, res) => {
   try {

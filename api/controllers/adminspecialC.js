@@ -1,4 +1,4 @@
-const Students = require("../models/Student.js");
+const Students = require("../models/StudentM.js");
 const nodemailer = require("nodemailer");
 
 const manageuser = async (req, res) => {

@@ -1,6 +1,6 @@
-const Comments = require("../models/comments");
-const Tutorial = require("../models/Tutorial");
-const Students = require("../models/Student");
+const Comments = require("../models/commentsM");
+const Tutorial = require("../models/TutorialM");
+const Students = require("../models/StudentM");
 
 const add = async (req, res) => {
   try {

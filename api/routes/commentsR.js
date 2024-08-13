@@ -1,5 +1,5 @@
 const express = require("express");
-const Comments = require("../controllers/comments");
+const Comments = require("../controllers/commentsC");
 const router = express.Router();
 
 router.get("/all", Comments.all);

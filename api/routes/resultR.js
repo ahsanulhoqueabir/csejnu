@@ -1,5 +1,5 @@
 const express = require("express");
-const result = require("../controllers/resultcontroll.js");
+const result = require("../controllers/resultC.js");
 const router = express.Router();
 router.post("/add", result.add);
 router.post("/addMany", result.addMany);

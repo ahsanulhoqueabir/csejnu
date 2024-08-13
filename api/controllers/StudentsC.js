@@ -1,5 +1,4 @@
-const { socailPlatforms, codingPlatforms } = require("../data/site.js");
-const Students = require("../models/Student.js");
+const Students = require("../models/StudentM.js");
 const projection = {
   id: 1,
   batch: 1,
@@ -40,7 +39,11 @@ const BasicInfo = async (req, res) => {
       id: 1,
       role: 1,
     };
-    const query = req.query;
+    const query = {
+      ...req.query,
+      batch: "B210305",
+    };
+
     const students = await Students.find(query, projection).sort({
       id: 1,
     });
@@ -55,7 +58,9 @@ const getSortedData = async (req, res) => {
     let sort_by = req.query.sortby;
     let sort_order = req.query.order || "asc";
 
-    const query = {};
+    const query = {
+      batch: "B210305",
+    };
     if (id) {
       query.id = id;
     }
@@ -82,7 +87,9 @@ const getSortedData = async (req, res) => {
 const queryData = async (req, res) => {
   try {
     const { email, id, phone } = req.query;
-    const query = {};
+    const query = {
+      batch: "B210305",
+    };
     if (email) {
       query["personal.email"] = email;
     }
@@ -120,6 +127,96 @@ const queryData = async (req, res) => {
     });
   } catch (error) {
     res.status(404).json({ message: error.message });
+  }
+};
+const deleteBatch = async (req, res) => {
+  try {
+    const { batch } = req.query;
+    const query = {
+      batch,
+    };
+    const result = await Students.deleteMany(query);
+    res.status(200).json({
+      message: "Batch deleted",
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+const Profile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const student = await Students.findOne(
+      {
+        id,
+      },
+      {
+        personal: 1,
+        addressInfo: 1,
+        education: 1,
+        social: 1,
+        codingProfile: 1,
+        batch: 1,
+        id: 1,
+      }
+    );
+    if (!student) {
+      res.status(404).json({
+        message: "Data not found",
+      });
+      return;
+    }
+    student.education?.sort((a, b) => b.passingYear - a.passingYear);
+
+    res.status(200).json(student);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+const batchwise = async (req, res) => {
+  try {
+    const limit = req.query.limit || 12;
+    const page = req.query.page || 1;
+    const skip = (page - 1) * limit;
+    const query = {
+      ...req.query,
+    };
+    if (req.query.limit) {
+      delete query.limit;
+    }
+    if (req.query.page) {
+      delete query.page;
+    }
+    const students = await Students.find(query, {
+      id: 1,
+      batch: 1,
+      "personal.name": 1,
+      "personal.email": 1,
+      "personal.blood": 1,
+      "personal.gender": 1,
+      "personal.birthday": 1,
+      "personal.religion": 1,
+      "personal.phone": 1,
+      "personal.photo": 1,
+      addressInfo: 1,
+      education: 1,
+      social: 1,
+      codingProfile: 1,
+    })
+      .sort({
+        id: 1,
+      })
+      .limit(limit)
+      .skip(skip);
+    if (!students) {
+      res.status(404).json({
+        message: "Data not found",
+      });
+      return;
+    }
+    res.status(200).json(students);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
   }
 };
 const updateStudent = async (req, res) => {
@@ -268,4 +365,7 @@ module.exports = {
   updateSpecificField,
   deleteField,
   modifyData,
+  batchwise,
+  Profile,
+  deleteBatch,
 };

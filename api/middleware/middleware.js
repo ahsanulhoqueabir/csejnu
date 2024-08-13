@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const users = require("../models/Student.js");
+const users = require("../models/StudentM.js");
 //  Middlewares
 const verifyJWT = (req, res, next) => {
   const authorized = req.headers.authorization;
