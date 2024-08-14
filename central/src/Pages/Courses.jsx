@@ -16,7 +16,12 @@ const Courses = () => {
       .then((res) => {
         const d = res.data;
         const data = [];
-        data.push(d[2], d[6], d[5], d[1], d[8], d[3], d[4], d[0]);
+        for (let i = 0; i < 9; i++) {
+          const ind = sem.indexOf(d[i]._id);
+          if (ind !== -1) {
+            data[ind] = d[i];
+          }
+        }
         setCourses(data);
         setLoading(false);
       })
@@ -43,3 +48,5 @@ const Courses = () => {
 export default Courses;
 
 // 42 22 11 32 41 21 12 00 31
+
+const sem = ["S11", "S12", "S21", "S22", "S31", "S32", "S41", "S42"];

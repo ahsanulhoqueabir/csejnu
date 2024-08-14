@@ -12,12 +12,12 @@ const Course = ({ course }) => {
       <h1 className="text-center pb-5 lg:text-4xl font-philosopher">
         {getSemester(id)}
       </h1>
-      <div>
-        <table className="table table-auto  border-2 border-info-content">
+      <div className=" overflow-x-scroll no-scrollbar">
+        <table className="table table-auto border-2 border-info-content">
           <thead>
             <tr
               className="divide-x-[2px] border-[2px] 
-            border-info-content text-info-content divide-info-content"
+            border-info-content text-info-content divide-info-content text-lg lg:text-2xl font-normal"
             >
               <td>Code</td>
               <td>Title</td>
@@ -34,7 +34,7 @@ const Course = ({ course }) => {
               className="divide-x-2 border-[2px]  
             border-info-content divide-info-content"
             >
-              <td colspan="3" className="text-right">
+              <td colSpan="3" className="text-right">
                 Total
               </td>
               <td>{total_marks}</td>

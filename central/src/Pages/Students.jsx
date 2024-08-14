@@ -55,7 +55,7 @@ const Students = () => {
       behavior: "smooth",
     });
   }, [currentItems]);
-  if (loading) {
+  if (loading || false) {
     return <CardLoading />;
   }
   return (
