@@ -52,7 +52,7 @@ const SideBar = () => {
           </div>
         )}
         <ul
-          className={`menu select-none  h-full overflow-auto flex gap-1 w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
+          className={`menu select-none  h-full overflow-auto flex flex-nowrap gap-1 w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
             isChecked ? "pt-12" : ""
           }`}
         >
@@ -103,12 +103,6 @@ const routes = [
     children: [],
   },
   {
-    name: "Overview",
-    icon: "FaInfo",
-    pack: "fa",
-    path: "overview",
-  },
-  {
     name: "Students",
     icon: "FaUserGraduate",
     pack: "fa",
@@ -139,6 +133,18 @@ const routes = [
         path: "students/batch/B180305",
       },
     ],
+  },
+  {
+    name: "Courses",
+    icon: "FaBook",
+    pack: "fa",
+    path: "courses",
+  },
+  {
+    name: "Overview",
+    icon: "FaInfo",
+    pack: "fa",
+    path: "overview",
   },
   {
     name: "Query Students",

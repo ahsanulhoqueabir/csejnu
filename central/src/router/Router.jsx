@@ -8,6 +8,7 @@ import StudentDetails from "../Pages/StudentDetails";
 import PageNotFound from "../Shared/PageNotFound";
 import LoadingPage from "../Shared/LoadingPage";
 import QueryPage from "../Pages/QueryPage";
+import Courses from "../Pages/Courses";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "query-students",
         element: <QueryPage />,
+      },
+      {
+        path: "courses",
+        element: <Courses />,
       },
       {
         path: "error",

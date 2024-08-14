@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/axios/useAxiosPublic";
 import Student from "../Components/Students/Student";
 import CardLoading from "../Shared/loader/CardLoading";
 import Loader from "../Shared/loader/Loader";
 import Pagination from "../Components/common/Pagination";
 import ScrollToTop from "../Components/common/ScrollToTop";
+import BreadCrumb from "../Components/common/BreadCrumb";
 
 const Students = () => {
   const navigate = useNavigate();
@@ -59,7 +60,8 @@ const Students = () => {
   }
   return (
     <div>
-      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <BreadCrumb page={batchid} />
+      <section className="grid pt-5 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {currentItems?.map((student, index) => (
           <Student
             page={page}
