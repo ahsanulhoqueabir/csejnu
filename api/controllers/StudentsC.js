@@ -175,9 +175,9 @@ const Profile = async (req, res) => {
 };
 const batchwise = async (req, res) => {
   try {
-    const limit = req.query.limit || 12;
-    const page = req.query.page || 1;
-    const skip = (page - 1) * limit;
+    // const limit = req.query.limit || 12;
+    // const page = req.query.page || 1;
+    // const skip = (page - 1) * limit;
     const query = {
       ...req.query,
     };
@@ -197,17 +197,16 @@ const batchwise = async (req, res) => {
       "personal.birthday": 1,
       "personal.religion": 1,
       "personal.phone": 1,
-      "personal.photo": 1,
+      "personal.about": 1,
       addressInfo: 1,
       education: 1,
       social: 1,
       codingProfile: 1,
-    })
-      .sort({
-        id: 1,
-      })
-      .limit(limit)
-      .skip(skip);
+    }).sort({
+      id: 1,
+    });
+    // .limit(limit)
+    // .skip(skip);
     if (!students) {
       res.status(404).json({
         message: "Data not found",

@@ -7,19 +7,19 @@ import { useEffect } from "react";
 
 const Student = ({ student, page, setPage }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    const observer = new IntersectionObserver((para) => {
-      if (para[0].isIntersecting) {
-        observer.unobserve(lastStd);
-        setPage(page + 1);
-      }
-    });
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((para) => {
+  //     if (para[0].isIntersecting) {
+  //       observer.unobserve(lastStd);
+  //       setPage(page + 1);
+  //     }
+  //   });
 
-    const lastStd = document.querySelector(".student-card:last-child");
-    if (lastStd) {
-      observer.observe(lastStd);
-    }
-  }, [student]);
+  //   const lastStd = document.querySelector(".student-card:last-child");
+  //   if (lastStd) {
+  //     observer.observe(lastStd);
+  //   }
+  // }, [student]);
   const { id, personal } = student;
   const social = [...student.social, ...student.codingProfile];
   return (
@@ -38,9 +38,9 @@ const Student = ({ student, page, setPage }) => {
         />
         {/* modal  */}
         <dialog id={id} className="modal">
-          <div className="modal-box size-80 lg:size-96 p-0 shadow-md shadow-teal-200">
+          <div className="modal-box size-80 lg:size-96 p-0 shadow-md shadow-teal-200 no-scrollbar">
             <img
-              className="size-80 lg:size-96 object-cover"
+              className="size-80 lg:size-96 aspect-square object-cover"
               src={
                 personal?.photo
                   ? personal.photo
@@ -57,7 +57,7 @@ const Student = ({ student, page, setPage }) => {
         <span className="absolute bottom-3 right-0 h-5 w-5 animate-ping rounded-full bg-green-500"></span>
       </div>
       <div className="space-y-1 text-center pb-2">
-        <h1 className="pt-2 lg:text-2xl font-playwrite">
+        <h1 className="pt-2 lg:text-xl font-playwrite">
           {personal?.name?.fullName}
         </h1>
         <p className="text-sm text-gray-400">CSE undergrad</p>

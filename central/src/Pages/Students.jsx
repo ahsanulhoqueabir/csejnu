@@ -4,6 +4,8 @@ import useAxiosPublic from "../Hooks/axios/useAxiosPublic";
 import Student from "../Components/Students/Student";
 import CardLoading from "../Shared/loader/CardLoading";
 import Loader from "../Shared/loader/Loader";
+import Pagination from "../Components/common/Pagination";
+import ScrollToTop from "../Components/common/ScrollToTop";
 
 const Students = () => {
   const navigate = useNavigate();
@@ -13,18 +15,15 @@ const Students = () => {
   const [reloading, setReloading] = useState(true);
   const [page, setPage] = useState(1);
   const [students, setStudents] = useState([]);
-  useEffect(() => {
-    setPage(1);
-    setStudents([]);
-  }, [batchid]);
+
   useEffect(() => {
     if (batchid) {
       setReloading(true);
       axiosPublic
         .get(`/students/batchwise?batch=${batchid}&page=${page}`)
         .then((res) => {
-          // setStudents(res.data);
-          setStudents((prev) => [...prev, ...res.data]);
+          setStudents(res.data);
+          // setStudents((prev) => [...prev, ...res.data]);
           setLoading(false);
           setReloading(false);
         })
@@ -35,14 +34,33 @@ const Students = () => {
           navigate("/page-not-found");
         });
     }
-  }, [batchid, page]);
+  }, [batchid]);
+  // pagination part
+  const [itemsPerPage, setItemPerPage] = useState(12);
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(students.length / itemsPerPage);
+  const endIndex = currentPage * itemsPerPage;
+  const startIndex = endIndex - itemsPerPage;
+  let currentItems = students.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    // setCurrentItems(students.slice(startIndex, startIndex + itemsPerPage));
+    currentItems = students.slice(startIndex, startIndex + itemsPerPage);
+  }, [students, currentPage]);
+  useEffect(() => {
+    // Smooth scroll to the top whenever the values in para change
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [currentItems]);
   if (loading) {
     return <CardLoading />;
   }
   return (
     <div>
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {students?.map((student, index) => (
+        {currentItems?.map((student, index) => (
           <Student
             page={page}
             setPage={setPage}
@@ -51,7 +69,16 @@ const Students = () => {
           />
         ))}
       </section>
-      {reloading && <Loader />}
+      <div>
+        {students.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            pageCount={totalPages}
+          />
+        )}
+      </div>
     </div>
   );
 };

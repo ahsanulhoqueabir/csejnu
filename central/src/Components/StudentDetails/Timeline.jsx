@@ -25,7 +25,7 @@ const EachPhase = ({ data, index, length }) => {
     <li className="w-full">
       <hr className="bg-info-content" />
       <div className="timeline-middle">
-        {data.passingYear > thisYear ? (
+        {data.passingYear >= thisYear ? (
           <FaCircleNotch className=" animate-spin text-red-600 text-xl" />
         ) : (
           <FaRegCheckCircle className="text-teal-600 text-xl" />
