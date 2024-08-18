@@ -147,6 +147,12 @@ const routes = [
     path: "class-routine",
   },
   {
+    name: "Faculty",
+    icon: "FaChalkboardTeacher",
+    pack: "fa",
+    path: "faculty",
+  },
+  {
     name: "Overview",
     icon: "FaInfo",
     pack: "fa",

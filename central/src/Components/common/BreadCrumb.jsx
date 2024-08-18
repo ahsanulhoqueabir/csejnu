@@ -153,4 +153,17 @@ const pages = {
       pack: "fa",
     },
   ],
+  Faculty: [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "Faculty",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ],
 };

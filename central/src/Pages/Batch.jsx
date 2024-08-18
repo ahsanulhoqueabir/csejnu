@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import anim from "../assets/animation/cube.json";
 import LoadingPage from "../Shared/LoadingPage";
 import ErrorPage from "../Shared/ErrorPage";
+import CRProfile from "../Components/batch/CRProfile";
 const Batch = () => {
   const { batchid } = useParams();
 
@@ -48,37 +49,9 @@ const Batch = () => {
           <h1 className="text-3xl font-semibold capitalize pb-4">
             class representative
           </h1>
-          <div className="">
-            <div className="flex gap-4 items-center pb-5">
-              <img
-                className="object-cover size-[100px] rounded-lg"
-                src={
-                  cr.male.personal.photo ||
-                  `https://placehold.co/100?text=${cr.male.personal.name.fullName}`
-                }
-                alt=""
-              />
-              <div className="">
-                <h1>Name: {cr.male.personal.name.fullName}</h1>
-                <h1>Email: {cr.male.personal.email}</h1>
-                <h1>Phone: {cr.male.personal.phone}</h1>
-              </div>
-            </div>
-            <div className="flex gap-4 items-center ">
-              <img
-                className="object-cover size-[100px] rounded-lg"
-                src={
-                  cr.female?.personal.photo ||
-                  `https://placehold.co/100?text=${cr.female?.personal.name.fullName}`
-                }
-                alt=""
-              />
-              <div className="">
-                <h1>Name: {cr.female?.personal.name.fullName}</h1>
-                <h1>Email: {cr.female?.personal.email}</h1>
-                <h1>Phone: {cr.female?.personal.phone}</h1>
-              </div>
-            </div>
+          <div className="space-y-5">
+            {cr.male && <CRProfile info={cr.male.personal} />}
+            {cr.female && <CRProfile info={cr.female.personal} />}
           </div>
           <div className="pt-8">
             <span className="block font-semibold text-info-content">

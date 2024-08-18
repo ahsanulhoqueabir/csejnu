@@ -12,6 +12,8 @@ import Courses from "../Pages/Courses";
 import ClassRoutine from "../Pages/ClassRoutine";
 import Batch from "../Pages/Batch";
 import BatchRoutine from "../Pages/BatchRoutine";
+import Faculty from "../Pages/Faculty";
+import FacultyProfile from "../Components/faculty/FacultyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ export const router = createBrowserRouter([
       {
         path: "class-routine",
         element: <ClassRoutine />,
+      },
+      {
+        path: "faculty",
+        element: <Faculty />,
+      },
+      {
+        path: "faculty/profile/:id",
+        element: <FacultyProfile />,
       },
       {
         path: "error",
