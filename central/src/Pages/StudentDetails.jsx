@@ -32,7 +32,7 @@ const StudentDetails = () => {
   if (loading) {
     return <LoadingPage />;
   }
-  const { personal, addressInfo, education, info } = student;
+  const { personal, profiles, addressInfo, education, info } = student;
   return (
     <div>
       <div className="-ml-5 lg:-ml-20 flex flex-col lg:flex-row lg:gap-6 -mt-10">
@@ -116,6 +116,7 @@ const StudentDetails = () => {
             contact={personal}
           />
           <SocialLink
+            profiles={profiles || {}}
             social={info?.social ? info.social : []}
             coding={info?.codingProfile ? info.codingProfile : []}
           />

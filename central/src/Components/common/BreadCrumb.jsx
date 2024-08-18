@@ -1,8 +1,8 @@
 import GetIcon from "../../utilities/Icon";
 import { setTitle } from "../../utilities/functions";
 import { Link } from "react-router-dom";
-const BreadCrumb = ({ page }) => {
-  const paths = pages[page];
+const BreadCrumb = ({ routes, page }) => {
+  const paths = routes || pages[page];
   setTitle(page);
   return (
     <div className="breadcrumbs text-sm lg:text-xl -mt-10 py-5 select-none">
@@ -72,7 +72,7 @@ const pages = {
       path: "/",
     },
     {
-      name: "Students",
+      name: "Batch",
       icon: "FaFolderOpen",
       pack: "fa",
       path: "/",
@@ -91,7 +91,7 @@ const pages = {
       path: "/",
     },
     {
-      name: "Students",
+      name: "Batch",
       icon: "FaFolderOpen",
       pack: "fa",
       path: "/",
@@ -110,7 +110,7 @@ const pages = {
       path: "/",
     },
     {
-      name: "Students",
+      name: "Batch",
       icon: "FaFolderOpen",
       pack: "fa",
       path: "/",
@@ -129,13 +129,26 @@ const pages = {
       path: "/",
     },
     {
-      name: "Students",
+      name: "Batch",
       icon: "FaFolderOpen",
       pack: "fa",
       path: "/",
     },
     {
       name: "10th Batch",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ],
+  "class-routine": [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "Class Routine",
       icon: "FaFileMedicalAlt",
       pack: "fa",
     },

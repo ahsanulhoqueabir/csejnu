@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import err from "../assets/animation/error.json";
+import err from "../assets/animation/error-404";
 import { Link, useRouteError } from "react-router-dom";
 import { FaArrowTurnUp } from "react-icons/fa6";
 const ErrorPage = () => {

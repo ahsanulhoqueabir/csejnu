@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/axios/useAxiosPublic";
 import Student from "../Components/Students/Student";
 import CardLoading from "../Shared/loader/CardLoading";
-import Loader from "../Shared/loader/Loader";
 import Pagination from "../Components/common/Pagination";
-import ScrollToTop from "../Components/common/ScrollToTop";
 import BreadCrumb from "../Components/common/BreadCrumb";
+import { getBatch } from "../utilities/functions";
 
 const Students = () => {
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const Students = () => {
   let currentItems = students.slice(startIndex, endIndex);
 
   useEffect(() => {
-    // setCurrentItems(students.slice(startIndex, startIndex + itemsPerPage));
     currentItems = students.slice(startIndex, startIndex + itemsPerPage);
   }, [students, currentPage]);
   useEffect(() => {
@@ -58,9 +56,28 @@ const Students = () => {
   if (loading || false) {
     return <CardLoading />;
   }
+  const routes = [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: getBatch(batchid),
+      icon: "FaFolderOpen",
+      pack: "fa",
+      path: `/batch/${batchid}`,
+    },
+    {
+      name: "Students",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ];
   return (
     <div>
-      <BreadCrumb page={batchid} />
+      <BreadCrumb page={batchid} routes={routes} />
       <section className="grid pt-5 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {currentItems?.map((student, index) => (
           <Student

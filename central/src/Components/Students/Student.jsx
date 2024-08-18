@@ -8,7 +8,11 @@ const Student = ({ student }) => {
   const navigate = useNavigate();
 
   const { id, personal } = student;
-  const social = [...student.social, ...student.codingProfile];
+  // const social = [...student.social, ...student.codingProfile];
+  const social = {
+    ...student.profiles?.social,
+    ...student.profiles?.coding,
+  };
   return (
     <div className="flex w-full student-card h-[550px] flex-col items-center justify-center  rounded-xl bg-accent-content p-4 shadow-lg text-info-content">
       <Header personal={personal} id={id} />
@@ -25,9 +29,14 @@ const Student = ({ student }) => {
       </div>
       {/* social icons  */}
       <div className="flex justify-between gap-4 py-1 pb-2">
-        {social.slice(0, 5).map((prof, index) => (
+        {/* {social.slice(0, 5).map((prof, index) => (
           <Account key={index} profile={prof} />
-        ))}
+        ))} */}
+        {Object.keys(social)
+          .slice(0, 5)
+          .map((prof, index) => (
+            <Account key={index} profile={social[prof]} />
+          ))}
       </div>
       <div className="flex justify-center w-full">
         <button

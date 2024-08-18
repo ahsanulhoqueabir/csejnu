@@ -9,6 +9,9 @@ import PageNotFound from "../Shared/PageNotFound";
 import LoadingPage from "../Shared/LoadingPage";
 import QueryPage from "../Pages/QueryPage";
 import Courses from "../Pages/Courses";
+import ClassRoutine from "../Pages/ClassRoutine";
+import Batch from "../Pages/Batch";
+import BatchRoutine from "../Pages/BatchRoutine";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +28,14 @@ export const router = createBrowserRouter([
         element: <Students />,
       },
       {
+        path: "routine/batch/:batchid",
+        element: <BatchRoutine />,
+      },
+      {
+        path: "batch/:batchid",
+        element: <Batch />,
+      },
+      {
         path: "students/details/:id",
         element: <StudentDetails />,
       },
@@ -35,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "courses",
         element: <Courses />,
+      },
+      {
+        path: "class-routine",
+        element: <ClassRoutine />,
       },
       {
         path: "error",

@@ -13,7 +13,7 @@ const Course = ({ course }) => {
         {getSemester(id)}
       </h1>
       <div className=" overflow-x-scroll no-scrollbar">
-        <table className="table table-auto border-2 border-info-content">
+        <table className="table table-auto border-2 border-info-content text-nowrap">
           <thead>
             <tr
               className="divide-x-[2px] border-[2px] 

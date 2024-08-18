@@ -24,12 +24,20 @@ const Navbar = () => {
           <SideBar />
         </div>
         <div>
-          <Link>
+          <Link className="flex items-center gap-1">
             <img
-              className="h-12 lg:h-16 drop-shadow-md "
+              className="h-8 lg:h-16 drop-shadow-md "
               src={getImage("logo", "jnu.png")}
               alt=""
             />
+            <div className="font-changa font-light">
+              <h1 className="text-xs lg:text-lg text-[#954a22]">
+                Computer Science & Engineering
+              </h1>
+              <h1 className="text-xs lg:text-lg text-[#ea2629]">
+                Jagannath University
+              </h1>
+            </div>
           </Link>
         </div>
         <div className="flex gap-4 items-center">

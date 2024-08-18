@@ -31,5 +31,28 @@ const getSemester = (code) => {
     return "4th Year,2nd Semester";
   }
 };
+const getBatch = (code) => {
+  if (code === "B240305") {
+    return `16th Batch`;
+  }
+  if (code === "B230305") {
+    return `15th Batch`;
+  }
+  if (code === "B220305") {
+    return `14th Batch`;
+  }
+  if (code === "B210305") {
+    return `13th Batch`;
+  }
+  if (code === "B200305") {
+    return `12th Batch`;
+  }
+  if (code === "B190305") {
+    return `11th Batch`;
+  }
+  if (code === "B180305") {
+    return `10th Batch`;
+  }
+};
 
-export { getImage, setTitle, getSemester };
+export { getImage, setTitle, getSemester, getBatch };
