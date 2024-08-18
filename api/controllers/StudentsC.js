@@ -8,6 +8,7 @@ const projection = {
   education: 1,
   social: 1,
   codingProfile: 1,
+  profiles: 1,
 };
 const createStudent = async (req, res) => {
   const newStudent = new Students(req.body);
@@ -154,8 +155,9 @@ const Profile = async (req, res) => {
         personal: 1,
         addressInfo: 1,
         education: 1,
-        social: 1,
-        codingProfile: 1,
+        // social: 1,
+        // codingProfile: 1,
+        profiles: 1,
         batch: 1,
         id: 1,
       }
@@ -196,12 +198,14 @@ const batchwise = async (req, res) => {
       "personal.gender": 1,
       "personal.birthday": 1,
       "personal.religion": 1,
+      "personal.photo": 1,
       "personal.phone": 1,
       "personal.about": 1,
       addressInfo: 1,
       education: 1,
-      social: 1,
-      codingProfile: 1,
+      // social: 1,
+      // codingProfile: 1,
+      profiles: 1,
     }).sort({
       id: 1,
     });

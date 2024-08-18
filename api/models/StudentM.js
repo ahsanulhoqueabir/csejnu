@@ -1,5 +1,15 @@
 // import mongoose from "mongoose";
 const mongoose = require("mongoose");
+const ProfileSchema = new mongoose.Schema(
+  {
+    platform: { type: String }, // it should be always in lowercase eg. facebook,instagram,telegram
+    username: { type: String },
+  },
+  {
+    _id: false,
+    timestamps: false,
+  }
+);
 const studentSchema = new mongoose.Schema(
   {
     id: { type: String, required: true },
@@ -94,6 +104,16 @@ const studentSchema = new mongoose.Schema(
         handle: { type: String },
       },
     ],
+    profiles: {
+      social: {
+        type: Map,
+        of: ProfileSchema,
+      },
+      coding: {
+        type: Map,
+        of: ProfileSchema,
+      },
+    },
     skills: [{ type: String }],
     hobby: [{ type: String }],
     achievements: {

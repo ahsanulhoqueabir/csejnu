@@ -19,6 +19,7 @@ const commentRoute = require("./routes/commentsR.js");
 const pollRoute = require("./routes/pollR.js");
 const DeptRoute = require("./routes/departmentR.js");
 const facultyRoute = require("./routes/facultyR.js");
+const BatchRoute = require("./routes/batchR.js");
 const dotenv = require("dotenv");
 const sendNotice = require("./utility/SendMails.js");
 
@@ -60,6 +61,7 @@ app.use("/api/v1/comments", commentRoute);
 app.use("/api/v1/polls", pollRoute);
 app.use("/api/v1/departments", DeptRoute); // new
 app.use("/api/v1/faculty", facultyRoute); // new
+app.use("/api/v1/batch", BatchRoute); // new
 
 app.post("/admin/sendNotice", async (req, res) => {
   try {

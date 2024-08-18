@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.post("/add", verifyJWT, verifyAdmin, Students.createStudent);
+router.post("/add", Students.createStudent); // add verifyJWT, verifyAdmin,
 router.put("/updateStudent", verifyJWT, verifyUser, Students.updateStudent);
 router.put("/addNewField", Students.addNewField);
 router.put("/result", verifyJWT, Students.addResult);

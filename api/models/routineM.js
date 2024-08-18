@@ -4,7 +4,6 @@ const classRoutinSchema = new mongoose.Schema(
   {
     day: {
       type: String,
-      required: true,
     },
     semester: {
       type: String,
@@ -40,10 +39,49 @@ const examRoutineSchema = new mongoose.Schema(
   },
   { _id: false }
 );
+const BatchPeriods = new mongoose.Schema(
+  {
+    batch: { type: String },
+    semester: { type: String },
+    periods: [
+      {
+        start: { type: String },
+        end: { type: String },
+        room: { type: String },
+        course: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "courses",
+        },
+        span: { type: Number, default: 1 }, // per 30 min count as 1 span
+      },
+    ],
+  },
+  {
+    timestamps: false,
+    _id: false,
+  }
+);
+const allBatchRoutine = new mongoose.Schema(
+  [
+    {
+      day: { type: String },
+      batches: {
+        type: Map,
+        of: BatchPeriods,
+      },
+    },
+  ],
+  {
+    timestamps: false,
+    _id: false,
+  }
+);
 const RoutineSchema = new mongoose.Schema(
   {
+    calender: { type: String }, // cse-2024-first
     exam: [examRoutineSchema],
     class: [classRoutinSchema],
+    allbatch: [allBatchRoutine],
   },
   {
     timestamps: true,

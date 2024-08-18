@@ -25,6 +25,33 @@ const getCourses = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const semesterwise = async (req, res) => {
+  try {
+    const Courses = await courses.aggregate([
+      {
+        $group: {
+          _id: "$semester",
+
+          data: {
+            $push: {
+              CourseCode: "$CourseCode",
+              CourseTitle: "$CourseTitle",
+              CourseType: "$CourseType",
+              Marks: "$Marks",
+              Credit: "$Credit",
+              courseTeacher: "$courseTeacher",
+            },
+          },
+        },
+      },
+    ]);
+    res.send(Courses);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
+};
 const updateCourse = async (req, res) => {
   try {
     const updatedCourse = await courses.findByIdAndUpdate(
@@ -45,4 +72,5 @@ module.exports = {
   addNew,
   getCourses,
   updateCourse,
+  semesterwise,
 };

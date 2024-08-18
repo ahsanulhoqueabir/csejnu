@@ -26,6 +26,7 @@ const facultySchema = new Schema(
         nickname: {
           type: String,
         },
+        accronym: { type: String },
       },
       about: { type: String },
       blood: { type: String },
