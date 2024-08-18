@@ -5,12 +5,11 @@ import { FaEdit, FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
-import LoadingPage from "../../Shared/LoadingPage";
 import SMCP from "../../../utility/iconname";
 import GetIcon from "../../../utility/icons";
 import TextEditor from "../../Editor/TextEditor";
 
-const PersonalInfo = ({ info, setStudentData }) => {
+const PersonalInfo = ({ info }) => {
   const [newBio, setNewBio] = useState(info.personal?.about);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -63,10 +62,7 @@ const PersonalInfo = ({ info, setStudentData }) => {
       setIsBioActive(false);
     }
   }, [newBio]);
-
-  // if (loading) {
-  //   return <LoadingPage />;
-  // }
+  const { profiles } = info;
   return (
     <div>
       <Headline>Personal Information</Headline>
@@ -163,8 +159,8 @@ const PersonalInfo = ({ info, setStudentData }) => {
             >
               <h2 className="text-lg font-bold">Social Link:</h2>
               <div className="pt-5 grid gap-2 grid-cols-6 lg:grid-cols-8 px-5 justify-between">
-                {info?.social?.map((item, ind) => (
-                  <Account profile={item} key={ind} />
+                {Object.keys(profiles.social).map((item, ind) => (
+                  <Account profile={profiles.social[item]} key={ind} />
                 ))}
               </div>
             </div>
@@ -228,7 +224,7 @@ const Account = ({ profile }) => {
   const info = SMCP[profile.platform];
   return (
     <a
-      href={`${info.base}${profile.link?.trim() || profile.handle?.trim()}`}
+      href={`${info.base}${profile.username?.trim()}`}
       target="_blank"
       rel="noreferrer"
     >

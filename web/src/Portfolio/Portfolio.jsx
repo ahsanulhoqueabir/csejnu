@@ -14,38 +14,29 @@ const Portfolio = () => {
   const { id } = useParams();
   const [info, setInfo] = useState({});
   const [isBlank, setBlank] = useState(false);
+  const [Loading, setLoading] = useState(true);
   const { loading, data, error } = usePublicFetch(
     `/students/allstudents?id=${id}`
   );
   useEffect(() => {
-    if (!loading) {
-      setInfo(data[0]);
-    }
     if (data.length == 0 && !loading) {
       setBlank(true);
+      setLoading(false);
+    }
+    if (!loading && data.length !== 0) {
+      setInfo(data[0]);
+      setLoading(false);
     }
   }, [loading]);
+  const { personal, addressInfo, batch, profiles, education, role } = info;
 
   // setLoading(false);
-  if (loading) {
+  if (loading || Loading) {
     return <LoadingPage />;
   }
-  if (error || isBlank) {
+  if (error || isBlank || data.length === 0) {
     return <PageNotFound />;
   }
-  const { personal, addressInfo, batch, education, role } = info;
-  const showImage = () => {
-    <dialog id="myimage" className="modal">
-      <div className="modal-box">
-        <h3 className="font-bold text-lg">Hello!</h3>
-        <p className="py-4">Press ESC key or click outside to close</p>
-      </div>
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>;
-  };
-
   return (
     <>
       {data.length === 0 && <PageNotFound />}
@@ -130,10 +121,7 @@ const Portfolio = () => {
           {/*------------------------------------ right side --------------------------------------- */}
           <div className="lg:w-[40%] border-l-[30px] lg:border-l-0 border-teal-900 pt-10  lg:pt-32 lg:bg-secondary-content pl-3 lg:pl-10">
             <Contact addressInfo={addressInfo} contact={personal} />
-            <SocialLink
-              social={info?.social ? info.social : []}
-              coding={info?.codingProfile ? info.codingProfile : []}
-            />
+            <SocialLink profiles={profiles} />
             <Skills />
             <Languages />
           </div>

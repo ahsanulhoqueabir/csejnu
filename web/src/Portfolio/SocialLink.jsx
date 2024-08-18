@@ -1,16 +1,20 @@
 import SMCP from "../utility/iconname";
 import GetIcon from "../utility/icons";
 
-const SocialLink = ({ social, coding }) => {
-  const allProfile = [...social, ...coding];
+const SocialLink = ({ profiles }) => {
+  // const allProfile = {};
+  const allProfile = {
+    ...profiles?.social,
+    ...profiles?.coding,
+  };
   return (
     <>
-      {allProfile.length > 0 && (
+      {allProfile && (
         <div className="text-info-content">
           <h1 className="text-3xl">SOCIAL PROFILE</h1>
           <ul className="py-5 text-lg flex flex-col gap-3">
-            {allProfile.map((profile, index) => (
-              <Account key={index} profile={profile} />
+            {Object.keys(allProfile).map((profile, index) => (
+              <Account key={index} profile={allProfile[profile]} />
             ))}
           </ul>
           <hr className=" border-gray-400 w-3/4 py-5" />

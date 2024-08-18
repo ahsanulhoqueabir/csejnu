@@ -6,7 +6,15 @@ import Contact from "./Sections/Contact";
 const Student = ({ item }) => {
   const [activeSection, setActiveSection] = useState("#about");
 
-  const { id, personal, addressInfo, codingProfile, education, social } = item;
+  const {
+    id,
+    personal,
+    addressInfo,
+    codingProfile,
+    education,
+    profiles,
+    social,
+  } = item;
   const handleSection = (sectionId) => {
     setActiveSection(sectionId);
   };
@@ -37,7 +45,7 @@ const Student = ({ item }) => {
           <div className="card-content text-info-content">
             <div className="card-subtitle">ABOUT</div>
             <div
-              className="card-desc text-info-content first-letter:text-7xl first-letter:font-bold first-letter:text-info-content
+              className="font-changa card-desc text-info-content first-letter:text-7xl first-letter:font-bold first-letter:text-info-content
   first-letter:mr-3 first-letter:float-left"
               dangerouslySetInnerHTML={{
                 __html: personal.about
@@ -63,10 +71,9 @@ const Student = ({ item }) => {
         >
           <Contact
             id={id}
+            profiles={profiles}
             personal={personal}
             addressInfo={addressInfo}
-            social={social}
-            codingProfile={codingProfile}
           />
         </div>
       </div>
@@ -116,7 +123,7 @@ const Header = ({ personal, id }) => {
           />
         </div>
         <div>
-          <h1 className="absolute top-3 left-20 font-semibold  uppercase">
+          <h1 className="absolute top-3 left-20 font-semibold  uppercase font-philosopher">
             {personal.name.fullName}{" "}
           </h1>
           <h2 className="absolute left-20 top-9 text-gray-500 font-medium text-xs">
@@ -164,7 +171,7 @@ const AboutHeader = ({ personal, id }) => {
         alt={personal.name.nickname}
       />
 
-      <h1 className="card-fullname pb-3 uppercase">
+      <h1 className=" font-philosopher card-fullname pb-5 uppercase">
         {personal.name.fullName}{" "}
       </h1>
       <h2 className="card-jobtitle">CSE Undergrad</h2>

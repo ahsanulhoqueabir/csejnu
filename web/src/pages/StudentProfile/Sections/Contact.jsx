@@ -7,9 +7,19 @@ import {
 import { Link } from "react-router-dom";
 import SMCP from "../../../utility/iconname";
 import GetIcon from "../../../utility/icons";
-const Contact = ({ addressInfo, id, social, codingProfile, personal }) => {
+const Contact = ({
+  addressInfo,
+  id,
+  social,
+  codingProfile,
+  personal,
+  profiles,
+}) => {
   const { current } = addressInfo;
-  const allProfile = [...social, ...codingProfile];
+  const allProfile = {
+    ...profiles.social,
+    ...profiles.coding,
+  };
   return (
     <div className="card-content mt-8">
       <div className="card-subtitle">CONTACT</div>
@@ -34,9 +44,11 @@ const Contact = ({ addressInfo, id, social, codingProfile, personal }) => {
         </div>
 
         <div className="card-social">
-          {allProfile.slice(0, 5).map((profile, index) => (
-            <Media profile={profile} key={index} />
-          ))}
+          {Object.keys(allProfile)
+            .slice(0, 5)
+            .map((profile, index) => (
+              <Media profile={allProfile[profile]} key={index} />
+            ))}
         </div>
 
         <Link to={`${id}`}>

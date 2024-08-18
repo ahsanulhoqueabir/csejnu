@@ -56,7 +56,7 @@ const SideBar = () => {
           </div>
         )}
         <ul
-          className={`menu select-none  h-full overflow-auto grid w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
+          className={`menu select-none  h-full overflow-auto flex flex-nowrap w-72 p-4 relative bg-gradient-to-b from-[#D8EFD3] from-10% via-[#AAD7D9] via-60% to-[#222831] text-black ${
             isChecked ? "pt-12" : ""
           }`}
         >

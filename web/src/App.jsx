@@ -8,7 +8,6 @@ import "aos/dist/aos.css";
 AOS.init();
 import { ScrollToTopOnRouteChange } from "./components/common/ScrollToTopOnRouteChange";
 import Drawer from "./components/common/Drawer";
-import SideBar from "./components/common/SideBar";
 function App() {
   // const [isOpen, setIsOpen] = useState(true);
   // const ShowedAlert = sessionStorage.getItem("Anniversary");
@@ -17,7 +16,7 @@ function App() {
   //   sessionStorage.setItem("Anniversary", true);
   // }
   return (
-    <div className=" lg:w-full selection:bg-teal-300 selection:text-black">
+    <div className=" lg:w-full selection:bg-teal-300 selection:text-black font-changa font-light text-lg">
       {/* <MyNav /> */}
       <Drawer />
       {/* <SideBar /> */}

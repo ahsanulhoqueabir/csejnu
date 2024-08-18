@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Changa:wght@200..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Grey+Qo&family=Jacquard+12&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
