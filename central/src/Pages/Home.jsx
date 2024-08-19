@@ -1,5 +1,6 @@
 import Hero from "../Components/Home/Hero";
 import Motto from "../Components/Home/Motto";
+import Notices from "../Components/Home/Notices";
 import { setTitle } from "../utilities/functions";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <div>
       <Hero />
       <Motto />
+      <Notices />
     </div>
   );
 };
