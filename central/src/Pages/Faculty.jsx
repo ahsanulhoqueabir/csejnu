@@ -92,6 +92,10 @@ const Faculty = () => {
         setError(err);
         setLoading(false);
       });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
   if (loading) {
     return <LoadingPage />;

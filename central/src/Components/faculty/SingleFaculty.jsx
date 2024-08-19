@@ -4,6 +4,7 @@ import { getImage } from "../../utilities/functions";
 const SingleFaculty = ({ faculty }) => {
   const { personal, position } = faculty;
   const navigate = useNavigate();
+  const rName = personal.name.fullName.split(" ").join("-");
   return (
     <div className="md:flex gap-3  p-2 border border-info-content rounded-md">
       <div className="w-44 md:w-64 mx-auto">
@@ -29,7 +30,7 @@ const SingleFaculty = ({ faculty }) => {
         <div className="flex justify-center w-full py-5 ">
           <button
             onClick={() => {
-              navigate(`/faculty/profile/${faculty._id}`);
+              navigate(`/faculty/profile/${rName}`);
             }}
             className="w-[90%] rounded-full py-2 font-medium text-gray-400 shadow-[0px_0px_10px_#E2DADA] duration-500  hover:scale-95 hover:bg-success hover:text-white hover:shadow-xl dark:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.8)]"
           >

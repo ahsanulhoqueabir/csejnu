@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getBatch, getSemester } from "../../utilities/functions";
+import { useNavigate } from "react-router-dom";
 
 const RoutineAccordion = ({ batches }) => {
   const [isOpen, setIsOpen] = useState(null);
@@ -66,6 +67,7 @@ const RoutineAccordion = ({ batches }) => {
 export default RoutineAccordion;
 
 const Slot = ({ periods, batch }) => {
+  const navigate = useNavigate();
   return (
     <div className="overflow-hidden ">
       <div
@@ -86,9 +88,23 @@ const Slot = ({ periods, batch }) => {
             </p>
             <p>
               <b>Teacher: </b>
-              {
-                item.course?.instructor[batch]?.teacher?.personal.name.fullName
-              }{" "}
+              <span
+                className=" cursor-pointer"
+                onClick={() => {
+                  navigate(
+                    `/faculty/profile/${item.course?.instructor[
+                      batch
+                    ]?.teacher?.personal.name.fullName
+                      .split(" ")
+                      .join("-")}`
+                  );
+                }}
+              >
+                {
+                  item.course?.instructor[batch]?.teacher?.personal.name
+                    .fullName
+                }
+              </span>{" "}
               <b>
                 (
                 {

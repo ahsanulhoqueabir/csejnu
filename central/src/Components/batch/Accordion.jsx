@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getImage } from "../../utilities/functions";
+import { useNavigate } from "react-router-dom";
 
 const Accordion = ({ classes, batch }) => {
   const [isOpen, setIsOpen] = useState(null);
@@ -74,6 +75,7 @@ const Accordion = ({ classes, batch }) => {
 export default Accordion;
 
 const Slot = ({ periods, batch }) => {
+  const navigate = useNavigate();
   return (
     <div className="overflow-hidden ">
       <div
@@ -96,10 +98,24 @@ const Slot = ({ periods, batch }) => {
                 </p>
                 <p>
                   <b>Teacher: </b>
-                  {
-                    item.course?.instructor[batch]?.teacher?.personal.name
-                      .fullName
-                  }{" "}
+                  <span
+                    className=" cursor-pointer"
+                    onClick={() => {
+                      navigate(
+                        `/faculty/profile/${item.course?.instructor[
+                          batch
+                        ]?.teacher?.personal.name.fullName
+                          .split(" ")
+                          .join("-")}`
+                      );
+                    }}
+                  >
+                    {
+                      item.course?.instructor[batch]?.teacher?.personal.name
+                        .fullName
+                    }{" "}
+                  </span>
+
                   <b>
                     (
                     {
