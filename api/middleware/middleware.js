@@ -31,7 +31,7 @@ const verifyUser = async (req, res, next) => {
 const requireRole = async (role) => {
   return async (req, res, next) => {
     const email = req.decoded.email;
-    const user = await users.findOne({ email: email });
+    const user = await users.findOne({ "personal.email": email });
     if (user && role.includes(user.role)) {
       next();
     } else {
@@ -41,7 +41,7 @@ const requireRole = async (role) => {
 };
 const verifyAdmin = async (req, res, next) => {
   const email = req.decoded.email;
-  const user = await users.findOne({ email: email });
+  const user = await users.findOne({ "personal.email": email });
 
   if (user.role === "admin") {
     next();

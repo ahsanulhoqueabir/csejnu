@@ -52,7 +52,7 @@ const Query = async (req, res) => {
         });
       });
     });
-    await routine.populate(populatePaths);
+    const data = await routine.populate(populatePaths);
 
     const instructorPath = [];
     routine.allbatch.forEach((batchRoutine) => {
@@ -75,8 +75,8 @@ const Query = async (req, res) => {
         });
       });
     });
-    await routine.populate(instructorPath);
-    res.status(200).json(routine);
+    await data.populate(instructorPath);
+    res.status(200).json(data);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

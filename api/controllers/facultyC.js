@@ -40,15 +40,14 @@ const CreateMany = async (req, res) => {
 
 const Read = async (req, res) => {
   try {
-    const faculty = await Faculty.find(
-      {},
-      {
-        personal: 1,
-        teacher_id: 1,
-        department: 1,
-        position: 1,
-      }
-    ).populate({
+    const query = req.query;
+    const faculty = await Faculty.find(query, {
+      personal: 1,
+      teacher_id: 1,
+      department: 1,
+      position: 1,
+      dept_id: 1,
+    }).populate({
       path: "department",
       select: "name accronym chairman dept_id -_id",
       populate: {
@@ -74,7 +73,7 @@ const Read = async (req, res) => {
 
 const ReadOne = async (req, res) => {
   try {
-    const { teacher_id, id, email } = req.query;
+    const { teacher_id, id, email, _id, name } = req.query;
     const query = {};
     if (teacher_id) {
       query.teacher_id = teacher_id;
@@ -85,20 +84,32 @@ const ReadOne = async (req, res) => {
     if (email) {
       query["personal.email"] = email;
     }
+    if (_id) {
+      query._id = _id;
+    }
+    if (name) {
+      const ext = name.split("-").join(" ");
+      query["personal.name.fullName"] = ext;
+    }
     const faculty = await Faculty.findOne(query, {
-      createdAt: 0,
-      updatedAt: 0,
-      __v: 0,
+      personal: 1,
+      addressInfo: 1,
+      teacher_id: 1,
+      department: 1,
+      position: 1,
+    }).populate("department", {
+      dept_id: 1,
+      name: 1,
+      accronym: 1,
+      chairman: 1,
+      description: 1,
     });
     if (!faculty) {
-      res.send({
+      res.status(404).send({
         message: "Faculty not found",
       });
     }
-    res.status(200).send({
-      message: "Faculty Found",
-      faculty,
-    });
+    res.status(200).send(faculty);
   } catch (error) {
     res.status(500).send({
       message: error.message,

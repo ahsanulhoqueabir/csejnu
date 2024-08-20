@@ -226,6 +226,7 @@ const updateStudent = async (req, res) => {
   try {
     const query = req.query;
     const newData = await req.body;
+    console.log(newData);
 
     const student = await Students.updateOne(
       { "personal.email": query.email },
@@ -233,8 +234,15 @@ const updateStudent = async (req, res) => {
         $set: newData,
       }
     );
+    if (!student) {
+      res.status(404).json({
+        message: "Data not found",
+      });
+      return;
+    }
     res.status(200).json({
       message: "Data updated",
+      student,
     });
   } catch (error) {
     res.status(404).json({ message: error.message });

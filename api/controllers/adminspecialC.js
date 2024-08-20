@@ -7,6 +7,10 @@ const manageuser = async (req, res) => {
     const students = await Students.findByIdAndUpdate(req.query.id, {
       $set: data,
     });
+
+    if (!students) {
+      return res.status(404).json({ message: "No student found" });
+    }
     res.status(200).json({ data: students });
   } catch (error) {
     res.status(404).json({ message: error.message });
