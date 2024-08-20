@@ -14,6 +14,8 @@ import Batch from "../Pages/Batch";
 import BatchRoutine from "../Pages/BatchRoutine";
 import Faculty from "../Pages/Faculty";
 import FacultyProfile from "../Components/faculty/FacultyProfile";
+import Login from "../Pages/Login";
+import ManageStudents from "../Pages/ManageStudents";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +62,14 @@ export const router = createBrowserRouter([
       {
         path: "faculty/profile/:id",
         element: <FacultyProfile />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "manage-students",
+        element: <ManageStudents />,
       },
       {
         path: "error",

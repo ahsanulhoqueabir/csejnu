@@ -2,8 +2,11 @@ import React, { useRef, useState } from "react";
 import { FaAngleLeft, FaTh } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import GetIcon from "../../utilities/Icon";
+import useAuth from "../../Hooks/useAuth";
+import RouteControl from "./RouteControl";
 
 const SideBar = () => {
+  const { user } = useAuth();
   const [isChecked, setChecked] = useState(false);
   const ref = useRef(null);
   const handleRouteChange = () => {
@@ -57,34 +60,27 @@ const SideBar = () => {
           }`}
         >
           {/* In General Route */}
-          {routes.map((route, index) => {
-            {
-              if (route.children?.length) {
-                return (
-                  <li key={route.name}>
-                    <HeadRoute data={route} />
-                    <ul className="ml-6 border-l-2 border-black">
-                      {route.children.map((child, index) => (
-                        <BasicRoute
-                          key={child.name}
-                          handleRouteChange={handleRouteChange}
-                          data={child}
-                        />
-                      ))}
-                    </ul>
-                  </li>
-                );
-              } else {
-                return (
-                  <ParentRoute
-                    data={route}
-                    key={route.name}
-                    handleRouteChange={handleRouteChange}
-                  />
-                );
-              }
-            }
-          })}
+          <RouteControl handleRouteChange={handleRouteChange} routes={routes} />
+          {/* In Admin Route */}
+          {user && (
+            <RouteControl
+              routes={adminRoutes}
+              handleRouteChange={handleRouteChange}
+            />
+          )}
+          {user ? (
+            <Logout handleRouteChange={handleRouteChange} />
+          ) : (
+            <ParentRoute
+              data={{
+                name: "Login",
+                icon: "FaSignInAlt",
+                pack: "fa",
+                path: "/login",
+              }}
+              handleRouteChange={handleRouteChange}
+            />
+          )}
         </ul>
       </div>
     </div>
@@ -165,16 +161,14 @@ const routes = [
     path: "/query-students",
   },
 ];
-
-const BasicRoute = ({ data, handleRouteChange }) => {
-  return (
-    <li className="py-[1px]" onClick={handleRouteChange}>
-      <NavLink className="text-lg font-medium py-0" to={data.path}>
-        {data.name}
-      </NavLink>
-    </li>
-  );
-};
+const adminRoutes = [
+  {
+    name: "Manage Students",
+    icon: "FaUserGraduate",
+    pack: "fa",
+    path: "/manage-students",
+  },
+];
 const ParentRoute = ({ data, handleRouteChange }) => {
   return (
     <li onClick={handleRouteChange}>
@@ -185,11 +179,15 @@ const ParentRoute = ({ data, handleRouteChange }) => {
     </li>
   );
 };
-const HeadRoute = ({ data, handleRouteChange }) => {
+
+const Logout = ({ handleRouteChange }) => {
+  const { setUser, logout } = useAuth();
   return (
-    <p className="text-xl pb-0 font-medium ">
-      <GetIcon className={""} icon={data.icon} lib={data.pack} />{" "}
-      <span>{data.name}</span>
-    </p>
+    <li className="" onClick={logout}>
+      <p onClick={handleRouteChange} className="text-xl  font-medium ">
+        <GetIcon className={""} icon={"FaSignOutAlt"} lib={"fa"} />{" "}
+        <span>Logout</span>
+      </p>
+    </li>
   );
 };
