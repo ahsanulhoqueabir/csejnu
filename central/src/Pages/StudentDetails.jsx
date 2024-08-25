@@ -18,7 +18,7 @@ const StudentDetails = () => {
   useEffect(() => {
     if (id) {
       axiosPublic
-        .get(`/students/profile/${id}`)
+        .get(`/students/profile?id=${id}`)
         .then((res) => {
           setStudent(res.data);
           setLoading(false);

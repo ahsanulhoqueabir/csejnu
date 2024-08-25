@@ -79,6 +79,7 @@ const Account = ({ profile }) => {
 };
 
 const Header = ({ personal, id }) => {
+  const { gender } = personal;
   return (
     <>
       <div className="group relative  ">
@@ -88,7 +89,11 @@ const Header = ({ personal, id }) => {
           height={110}
           className="h-[110px] w-[110px] rounded-full bg-slate-500 object-cover"
           src={
-            personal?.photo ? personal.photo : getImage("photo", "profile.jpg")
+            personal?.photo
+              ? personal.photo
+              : gender === "M"
+              ? getImage("photo", "studentM.jpeg")
+              : getImage("photo", "studentF.jpeg")
           }
           alt={personal?.name.fullName}
         />
@@ -101,7 +106,9 @@ const Header = ({ personal, id }) => {
               src={
                 personal?.photo
                   ? personal.photo
-                  : getImage("photo", "profile.jpg")
+                  : gender === "M"
+                  ? getImage("photo", "studentM.jpeg")
+                  : getImage("photo", "studentF.jpeg")
               }
               // alt={info.personal?.name?.nickname}
             />{" "}

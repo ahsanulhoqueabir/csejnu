@@ -2,8 +2,10 @@ import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import Google from "./Google";
 import { useNavigate } from "react-router-dom";
+import useAxios from "../../Hooks/axios/useAxios";
 const managers = ["contact.ahsanul@gmail.com", "b210305040@cse.jnu.ac.bd"];
 const SignIn = ({ setState }) => {
+  const axiosPublic = useAxios();
   const navigate = useNavigate();
   const { email_login, setUser, logout } = useAuth();
   const onSubmit = (e) => {
@@ -13,14 +15,18 @@ const SignIn = ({ setState }) => {
     const password = form.password.value;
     email_login(email, password)
       .then((res) => {
-        if (managers.includes(res.user.email)) {
-          toast(`Welcome back ${res.user.displayName}`);
-          setUser(res.user);
-        } else {
-          toast.error("You are not authorized to login");
-          logout();
-          navigate("/");
-        }
+        axiosPublic
+          .get(`/auth/login?email=${res.user.email}`)
+          .then((resp) => {
+            toast(`Welcome back ${resp.data.data.name}`);
+            setUser(res.user);
+            navigate("/");
+          })
+          .catch((err) => {
+            toast.error("You are not authorized to login");
+            logout();
+            navigate("/");
+          });
       })
       .catch((err) => {
         toast.error(err.message);

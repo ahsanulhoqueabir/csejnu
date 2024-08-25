@@ -16,6 +16,8 @@ import Faculty from "../Pages/Faculty";
 import FacultyProfile from "../Components/faculty/FacultyProfile";
 import Login from "../Pages/Login";
 import ManageStudents from "../Pages/ManageStudents";
+import StudentProfile from "../Pages/StudentProfile";
+import Register from "../Pages/Register";
 
 export const router = createBrowserRouter([
   {
@@ -68,8 +70,16 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "register",
+        element: <Register />,
+      },
+      {
         path: "manage-students",
         element: <ManageStudents />,
+      },
+      {
+        path: "student-profile",
+        element: <StudentProfile />,
       },
       {
         path: "error",

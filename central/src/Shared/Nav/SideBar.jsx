@@ -1,12 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaTh } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import GetIcon from "../../utilities/Icon";
 import useAuth from "../../Hooks/useAuth";
 import RouteControl from "./RouteControl";
+import useAxiosSecure from "../../Hooks/axios/useAxiosSecure";
+import User from "./User";
 
 const SideBar = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const [userInfo, setUserInfo] = useState();
   const [isChecked, setChecked] = useState(false);
   const ref = useRef(null);
   const handleRouteChange = () => {
@@ -15,6 +19,19 @@ const SideBar = () => {
       setChecked(false);
     }
   };
+  useEffect(() => {
+    if (user) {
+      axiosSecure
+        .get(`/auth/login?email=${user?.email}`)
+        .then((res) => {
+          setUserInfo(res.data.data);
+        })
+        .catch((err) => {
+          // console.log(err);
+          toast("You are not registered!");
+        });
+    }
+  }, [user]);
   return (
     <div className="drawer z-[1200]">
       <input
@@ -59,10 +76,18 @@ const SideBar = () => {
             isChecked ? "pt-12" : ""
           }`}
         >
+          {user && userInfo && <User user={userInfo} />}
           {/* In General Route */}
           <RouteControl handleRouteChange={handleRouteChange} routes={routes} />
-          {/* In Admin Route */}
+          {/* In Student Route */}
           {user && (
+            <RouteControl
+              routes={studentRoutes}
+              handleRouteChange={handleRouteChange}
+            />
+          )}
+          {/* In Admin Route */}
+          {user && userInfo?.role === "admin" && (
             <RouteControl
               routes={adminRoutes}
               handleRouteChange={handleRouteChange}
@@ -159,6 +184,20 @@ const routes = [
     icon: "FaSearch",
     pack: "fa",
     path: "/query-students",
+  },
+  {
+    name: "Register",
+    icon: "FaUserPlus",
+    pack: "fa",
+    path: "/register",
+  },
+];
+const studentRoutes = [
+  {
+    name: "Profile",
+    icon: "FaUser",
+    pack: "fa",
+    path: "/student-profile",
   },
 ];
 const adminRoutes = [
