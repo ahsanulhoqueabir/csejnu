@@ -37,14 +37,12 @@ const Register = () => {
     axiosPublic
       .post("/auth/addnew", data)
       .then((res) => {
-        console.log(res.data);
         toast("Thank you.");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  console.log(data);
   return (
     <form onSubmit={handleForm}>
       <Personal setData={setData} />
