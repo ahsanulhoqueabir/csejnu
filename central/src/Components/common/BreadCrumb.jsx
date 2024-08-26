@@ -64,6 +64,25 @@ const pages = {
       pack: "fa",
     },
   ],
+  B220305: [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "Batch",
+      icon: "FaFolderOpen",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "14th Batch",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ],
   B210305: [
     {
       name: "Home",

@@ -130,6 +130,12 @@ const routes = [
     path: "students",
     children: [
       {
+        name: "14 Batch",
+        icon: "FaUserGraduate",
+        pack: "fa",
+        path: "/batch/B220305",
+      },
+      {
         name: "13 Batch",
         icon: "FaUserGraduate",
         pack: "fa",
