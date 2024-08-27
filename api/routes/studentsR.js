@@ -20,6 +20,7 @@ router.get("/allstudents", Students.getSortedData);
 router.get("/queryData", Students.queryData); // add verifyJWT
 router.get("/result", verifyJWT, verifyUser, Students.getResult);
 router.get("/batchwise", Students.batchwise);
-router.get("/profile/:id", Students.Profile);
+router.get("/profile", Students.Profile);
+router.get("/user-info", Students.userInfo);
 router.delete("/deletebatch", Students.deleteBatch);
 module.exports = router;

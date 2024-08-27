@@ -11,3 +11,7 @@ package = "@netlify/plugin-scheduled-functions"
 [functions."jnunotice"]
   schedule = "0 */2 * * *"
 
+[functions."birthdaymail"]
+  schedule = "5 0 * * *"
+
+

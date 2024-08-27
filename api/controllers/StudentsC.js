@@ -31,12 +31,12 @@ const getStudents = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
 const BasicInfo = async (req, res) => {
   try {
     const projection = {
       "personal.name": 1,
       "personal.email": 1,
+      "personal.photo": 1,
       id: 1,
       role: 1,
     };
@@ -144,24 +144,62 @@ const deleteBatch = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+const userInfo = async (req, res) => {
+  try {
+    const projection = {
+      "personal.name": 1,
+      "personal.email": 1,
+      "personal.photo": 1,
+      id: 1,
+      role: 1,
+    };
+    const { email, phone, id, name } = req.query;
+    const query = {};
+    if (email) {
+      query["personal.email"] = email;
+    }
+    if (phone) {
+      query["personal.phone"] = phone;
+    }
+    if (id) {
+      query.id = id;
+    }
+    if (name) {
+      query["personal.name.fullName"] = name;
+    }
+    const student = await Students.findOne(query, projection);
+    if (!student) {
+      res.status(404).json({
+        message: "Data not found",
+      });
+      return;
+    }
+
+    res.status(200).json(student);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
 const Profile = async (req, res) => {
   try {
-    const { id } = req.params;
-    const student = await Students.findOne(
-      {
-        id,
-      },
-      {
-        personal: 1,
-        addressInfo: 1,
-        education: 1,
-        // social: 1,
-        // codingProfile: 1,
-        profiles: 1,
-        batch: 1,
-        id: 1,
-      }
-    );
+    const { email, id } = req.query;
+    const query = {};
+    if (email) {
+      query["personal.email"] = email;
+    }
+    if (id) {
+      query.id = id;
+    }
+    const student = await Students.findOne(query, {
+      personal: 1,
+      addressInfo: 1,
+      education: 1,
+      // social: 1,
+      // codingProfile: 1,
+      profiles: 1,
+      batch: 1,
+      id: 1,
+    });
     if (!student) {
       res.status(404).json({
         message: "Data not found",
@@ -379,4 +417,5 @@ module.exports = {
   batchwise,
   Profile,
   deleteBatch,
+  userInfo,
 };
