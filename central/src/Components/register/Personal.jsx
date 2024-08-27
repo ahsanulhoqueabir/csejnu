@@ -1,3 +1,4 @@
+import DateField from "./fields/DateField";
 import FileField from "./fields/FileField";
 import SelectField from "./fields/SelectField";
 import TextField from "./fields/TextField";
@@ -17,6 +18,8 @@ const Personal = ({ setData }) => {
             return <SelectField key={ind} setData={setData} field={field} />;
           } else if (field.type === "file") {
             return <FileField key={ind} setData={setData} field={field} />;
+          } else if (field.type === "date") {
+            return <DateField key={ind} setData={setData} field={field} />;
           }
         })}
       </div>
@@ -26,13 +29,6 @@ const Personal = ({ setData }) => {
 
 export default Personal;
 
-const field = {
-  name: "personal.name.fullName",
-  type: "text",
-  placeholder: "Enter name",
-  label: "Your Full Name",
-  isRequired: true,
-};
 const fields = [
   {
     name: "id",
@@ -96,7 +92,7 @@ const fields = [
     type: "date",
     placeholder: "Enter birthday",
     label: "Birthday",
-    isRequired: false,
+    isRequired: true,
   },
   {
     name: "personal.religion",
