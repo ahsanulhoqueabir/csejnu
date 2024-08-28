@@ -3,7 +3,58 @@
 [![Instagram][instagram-shield]][instagram-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<h1> A Department Introductory Web Application Using MERN</h1>
+<h1 style="color:green"> A Department Introductory Web Application Using MERN</h1>
+<div>
+<h3>It includes-</h3>
+<ul>
+<li>Web for only Batch-13(web)</li>
+<li>Web for only full department(central)</li>
+<li>API to manage both sites</li>
+</ul>
+
+<h2>Live Links</h2>
+<strong>Ambiguity-13</strong>
+<ul>
+<li><a href="https://ambiguity13.netlify.app/">Live</a>
+<li><a href="https://ambiguity13.vercel.app/">Live</a>
+</ul>
+<strong>Dept CSE</strong>
+<ul>
+<li><a href="https://cse-jnu.netlify.app">Live</a>
+<li><a href="https://cse-jnu.vercel.app">Live</a>
+<li><a href="https://csejnuu.web.app">Live</a>
+</ul>
+
+<h2>Key Features</h2>
+<strong>Ambiguity-13</strong>
+<ol>
+<li>
+Batch Notices and University Notices
+</li>
+<li> Tutorials
+<li> Students Info
+<li> Student Login
+    <ul>
+    <li>See his profile</li>
+    <li> Results
+    <li>Update Profile Data
+    <li> Add Note
+    <li> Shared Notes
+    </ul>
+</li>
+<li> Admin Login
+<ul>
+<li> Manage Students
+<li> Manage Results
+<li> Manage Notes
+<li> Send Mail
+<li>Notice Manage
+</ul>
+</ol>
+
+<strong>Dept CSE-JnU</strong>
+
+</div>
 
 <!-- Social Media Link -->
 
