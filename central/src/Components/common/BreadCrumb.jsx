@@ -185,4 +185,17 @@ const pages = {
       pack: "fa",
     },
   ],
+  Edit: [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "Edit Profile",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ],
 };

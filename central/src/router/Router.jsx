@@ -18,6 +18,7 @@ import Login from "../Pages/Login";
 import ManageStudents from "../Pages/ManageStudents";
 import StudentProfile from "../Pages/StudentProfile";
 import Register from "../Pages/Register";
+import EditProfile from "../Pages/EditProfile";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: "student-profile",
         element: <StudentProfile />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
       },
       {
         path: "error",

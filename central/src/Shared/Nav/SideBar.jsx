@@ -199,12 +199,18 @@ const routes = [
   },
 ];
 const studentRoutes = [
-  {
-    name: "Profile",
-    icon: "FaUser",
-    pack: "fa",
-    path: "/student-profile",
-  },
+  // {
+  //   name: "Profile",
+  //   icon: "FaUser",
+  //   pack: "fa",
+  //   path: "/student-profile",
+  // },
+  // {
+  //   name: "Update",
+  //   icon: "FaUserEdit",
+  //   pack: "fa",
+  //   path: "/edit-profile",
+  // },
 ];
 const adminRoutes = [
   {
