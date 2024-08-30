@@ -174,6 +174,12 @@ const routes = [
     path: "class-routine",
   },
   {
+    name: "Holidays",
+    icon: "FaCalendarDay",
+    pack: "fa",
+    path: "academic-holidays",
+  },
+  {
     name: "Faculty",
     icon: "FaChalkboardTeacher",
     pack: "fa",

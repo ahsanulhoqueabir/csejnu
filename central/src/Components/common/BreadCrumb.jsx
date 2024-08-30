@@ -198,4 +198,17 @@ const pages = {
       pack: "fa",
     },
   ],
+  Holidays: [
+    {
+      name: "Home",
+      icon: "FaHome",
+      pack: "fa",
+      path: "/",
+    },
+    {
+      name: "Academic Holidays",
+      icon: "FaFileMedicalAlt",
+      pack: "fa",
+    },
+  ],
 };

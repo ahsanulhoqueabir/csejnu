@@ -19,6 +19,7 @@ import ManageStudents from "../Pages/ManageStudents";
 import StudentProfile from "../Pages/StudentProfile";
 import Register from "../Pages/Register";
 import EditProfile from "../Pages/EditProfile";
+import Holidays from "../Pages/Holidays";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "faculty/profile/:id",
         element: <FacultyProfile />,
+      },
+      {
+        path: "academic-holidays",
+        element: <Holidays />,
       },
       {
         path: "login",
