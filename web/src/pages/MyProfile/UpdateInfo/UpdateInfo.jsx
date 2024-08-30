@@ -11,7 +11,7 @@ const UpdateInfo = () => {
   const userMail = user?.email;
   useEffect(() => {
     fetch(
-      `https://cse13serverr.netlify.app/.netlify/functions/api/v1/students/queryData?email=${userMail}`
+      `https://api-jnu.netlify.app/.netlify/functions/api/v1/students/queryData?email=${userMail}`
     )
       .then((res) => res.json())
       .then((data) => {

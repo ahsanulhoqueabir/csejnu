@@ -18,50 +18,50 @@ const PersonalInfo = ({ info }) => {
   const handleBioUpdate = () => {
     setIsBioActive(true);
   };
-  useEffect(() => {
-    if (newBio) {
-      // setStudentData((prev) => ({
-      //   ...prev,
-      //   personal: {
-      //     ...prev.personal,
-      //     about: newBio,
-      //   },
-      // }));
-      const updatedData = {
-        "personal.about": newBio,
-      };
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, update it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axiosSecure
-            .put(`/students/updateStudent?email=${user?.email}`, updatedData)
-            .then((res) => {
-              // setStudentData((prev) => ({
-              //   ...prev,
-              //   personal: {
-              //     ...prev.personal,
-              //     about: newBio,
-              //   },
-              // }));
-            });
+  // useEffect(() => {
+  //   if (newBio) {
+  //     // setStudentData((prev) => ({
+  //     //   ...prev,
+  //     //   personal: {
+  //     //     ...prev.personal,
+  //     //     about: newBio,
+  //     //   },
+  //     // }));
+  //     const updatedData = {
+  //       "personal.about": newBio,
+  //     };
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Yes, update it!",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         axiosSecure
+  //           .put(`/students/updateStudent?email=${user?.email}`, updatedData)
+  //           .then((res) => {
+  //             // setStudentData((prev) => ({
+  //             //   ...prev,
+  //             //   personal: {
+  //             //     ...prev.personal,
+  //             //     about: newBio,
+  //             //   },
+  //             // }));
+  //           });
 
-          Swal.fire({
-            title: "Updated!",
-            text: "Your Bio has been updated.",
-            icon: "success",
-          });
-        }
-      });
-      setIsBioActive(false);
-    }
-  }, [newBio]);
+  //         Swal.fire({
+  //           title: "Updated!",
+  //           text: "Your Bio has been updated.",
+  //           icon: "success",
+  //         });
+  //       }
+  //     });
+  //     setIsBioActive(false);
+  //   }
+  // }, [newBio]);
   const { profiles } = info;
   return (
     <div>

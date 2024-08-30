@@ -11,6 +11,7 @@ import usePrivateFetch from "../../../hooks/fetch/usePrivateFetch";
 
 const UserProfile = () => {
   const { user } = useAuth();
+  const [loader, setLoader] = useState(true);
   const [info, setInfo] = useState([]);
   const { loading, data, error } = usePrivateFetch(
     `/students/queryData?email=${user?.email}`
@@ -18,16 +19,16 @@ const UserProfile = () => {
   useEffect(() => {
     if (!loading) {
       setInfo(data.data);
+      setLoader(false);
     }
   }, [loading]);
 
-  if (loading) {
+  if (loading || loader) {
     return <LoadingPage />;
   }
   if (error) {
     return <PageNotFound />;
   }
-
   return (
     <div className="min-h-screen">
       <Banner>My Profile</Banner>
