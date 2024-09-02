@@ -57,7 +57,7 @@ const NoticeBox = () => {
       </h1>
       <div className="h-[450px] bg-base-200 p-3 lg:p-10 rounded-lg shadow-lg shadow-green-200">
         <section className="py-5 relative">
-          {notice.map((card, index) => (
+          {notice?.map((card, index) => (
             <div className="" key={index}>
               {index % 2 === 0 ? (
                 <div

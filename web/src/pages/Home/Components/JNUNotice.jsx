@@ -28,7 +28,7 @@ const JNUNotice = () => {
       <Headline>JnU Notice</Headline>
       <section className="grid lg:grid-cols-2 gap-6">
         {!loading &&
-          notices.map((notice, ind) => (
+          notices?.map((notice, ind) => (
             <SingleNotice key={ind} notice={notice} index={ind} />
           ))}
       </section>

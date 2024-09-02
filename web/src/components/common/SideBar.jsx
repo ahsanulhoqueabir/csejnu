@@ -187,6 +187,13 @@ const routes = [
     children: [],
   },
   {
+    name: "Vote",
+    icon: "FaVoteYea",
+    pack: "fa",
+    path: "/polling",
+    isProtected: true,
+  },
+  {
     name: "Academic",
     icon: "FaBookOpen",
     pack: "fa",

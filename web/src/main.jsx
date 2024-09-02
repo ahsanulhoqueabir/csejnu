@@ -28,6 +28,7 @@ import UserDetailsRoute from "./router/UserDetailsRoute.jsx";
 import PageNotFound from "./pages/Shared/PageNotFound.jsx";
 import Editor from "./pages/Editor/Editor.jsx";
 import TextEditor from "./pages/Editor/TextEditor.jsx";
+import PollPage from "./pages/Poll/PollPage.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,14 @@ const route = createBrowserRouter([
       {
         path: "students/profileCard/:id",
         element: <Portfolio />,
+      },
+      {
+        path: "polling",
+        element: (
+          <PrivateRoute>
+            <PollPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "faculty",
