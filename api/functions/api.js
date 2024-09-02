@@ -21,6 +21,7 @@ const pollRoute = require("../routes/pollR.js");
 const DeptRoute = require("../routes/departmentR.js");
 const facultyRoute = require("../routes/facultyR.js");
 const BatchRoute = require("../routes/batchR.js");
+const generalRoute = require("../routes/generalR.js");
 
 const dotenv = require("dotenv");
 const sendNotice = require("../utility/SendMails.js");
@@ -68,6 +69,7 @@ app.use("/.netlify/functions/api/v1/polls", pollRoute);
 app.use("/.netlify/functions/api/v1/departments", DeptRoute);
 app.use("/.netlify/functions/api/v1/faculty", facultyRoute);
 app.use("/.netlify/functions/api/v1/batch", BatchRoute);
+app.use("/.netlify/functions/api/v1/common", generalRoute);
 
 app.post("/.netlify/functions/api/admin/sendNotice", async (req, res) => {
   try {

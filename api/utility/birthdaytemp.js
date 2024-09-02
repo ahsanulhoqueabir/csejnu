@@ -9,7 +9,7 @@ const BirthdayTemp = ({ student, message }) => {
     secure: false,
     auth: {
       user: "cr.csejnu@gmail.com",
-      pass: "yphtxlesuahbikcg",
+      pass: "bitz ncic pege trpa",
     },
     tls: {
       rejectUnauthorized: false,

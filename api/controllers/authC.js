@@ -65,14 +65,18 @@ const getRole = async (req, res) => {
 const birthdayMail = async (req, res) => {
   try {
     const today = new Date();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
     const students = await Student.find({
-      "personal.birthday": {
-        $gte: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-        $lt: new Date(
-          today.getFullYear(),
-          today.getMonth(),
-          today.getDate() + 1
-        ),
+      $expr: {
+        $and: [
+          {
+            $eq: [{ $month: "$personal.birthday" }, month],
+          },
+          {
+            $eq: [{ $dayOfMonth: "$personal.birthday" }, date],
+          },
+        ],
       },
     });
     if (!students.length) {
@@ -80,7 +84,7 @@ const birthdayMail = async (req, res) => {
       return;
     }
     const allPromise = students?.map(async (student) => {
-      const ind = Math.floor(Math.random() * 5);
+      const ind = Math.floor(Math.random() * 20);
       BirthdayTemp({
         student,
         message: messages[ind],
