@@ -6,6 +6,7 @@ import LoadingPage from "../../pages/Shared/LoadingPage";
 import ErrorPage from "../../pages/Shared/ErrorPage";
 import Allowed from "./Allowed";
 import NotAllowed from "./NotAllowed";
+import Candidates from "./Candidates";
 const PollPage = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -42,10 +43,13 @@ const PollPage = () => {
   if (error) {
     return <ErrorPage />;
   }
+  const isCompleted = new Date() > new Date("2024-09-03T09:05:00");
   return (
     <>
       <Banner>Democracy Corner</Banner>
-      {isVoted ? (
+      {isCompleted ? (
+        <Candidates />
+      ) : isVoted ? (
         <NotAllowed />
       ) : (
         <Allowed setVoted={setVoted} user={user} candidates={candidates} />

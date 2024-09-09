@@ -9,11 +9,16 @@ import PrivateRoute from "./PrivateRoute";
 import TutorialOnline from "../pages/Tutorial/courseWise/Tutorial";
 import Classes from "../pages/Tutorial/courseWise/Classes";
 import ClassDetails from "../pages/Tutorial/courseWise/details/ClassDetails";
+import ExamCalender from "../pages/ExamCalender/ExamCalender";
 
 const routes = [
   {
     path: "routine",
     element: <ClassRoutine />,
+  },
+  {
+    path: "exam-calender",
+    element: <ExamCalender />,
   },
   {
     path: "notes",

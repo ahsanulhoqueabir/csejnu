@@ -1,5 +1,5 @@
 import { FaRegThumbsUp, FaRegThumbsDown, FaReply } from "react-icons/fa6";
-import NewComment from "./NewComment";
+// import NewComment from "./NewComment";
 import Ignore from "./Ignore/Ignore";
 import TextEditor from "../../../Editor/TextEditor";
 import { useEffect, useState } from "react";

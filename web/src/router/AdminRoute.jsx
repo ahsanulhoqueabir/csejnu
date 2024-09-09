@@ -1,4 +1,5 @@
 import ManageUsers from "../pages/AdminPanel/ManageUser/ManageUsers";
+import NewExam from "../pages/AdminPanel/NewExam";
 import AddNotice from "../pages/AdminPanel/Notice/AddNotice";
 import UpcomingNotice from "../pages/AdminPanel/Notice/Components/UpcomingNotice";
 import UpdateNotice from "../pages/AdminPanel/Notice/Components/UpdateNotice";
@@ -26,6 +27,14 @@ const AdminRoute = [
     element: (
       <AdminOnly>
         <AddNotice />
+      </AdminOnly>
+    ),
+  },
+  {
+    path: "admin/add-new-exam-schedule",
+    element: (
+      <AdminOnly>
+        <NewExam />
       </AdminOnly>
     ),
   },

@@ -135,7 +135,7 @@ const SideBar = () => {
             AdminRoute.map((route, index) => {
               if (route.children?.length) {
                 return (
-                  <li key={index}>
+                  <li key={route.name}>
                     <HeadRoute data={route} />
                     <ul className="ml-8">
                       {route.children.map((child, index) => (
@@ -163,6 +163,7 @@ const SideBar = () => {
               } else {
                 return (
                   <ParentRoute
+                    key={route.name}
                     data={route}
                     handleRouteChange={handleRouteChange}
                   />
@@ -204,6 +205,13 @@ const routes = [
         icon: "FaCalendarCheck",
         pack: "fa",
         path: "/academic/routine",
+        isProtected: false,
+      },
+      {
+        name: "Exam Calender",
+        icon: "FaCalendarCheck",
+        pack: "fa",
+        path: "/academic/exam-calender",
         isProtected: false,
       },
       {
@@ -303,6 +311,10 @@ const AdminRoute = [
       {
         name: "Send Mail",
         path: "/admin/sendmail",
+      },
+      {
+        name: "New Exam",
+        path: "/admin/add-new-exam-schedule",
       },
     ],
   },

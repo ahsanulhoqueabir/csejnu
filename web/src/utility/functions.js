@@ -57,4 +57,26 @@ const dateInput = (date) => {
   const day = String(d.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
-export { getImage, getSemester, dateDifference, getDate, dateInput };
+const timeConvert = (time) => {
+  const [hourStr, minuteStr] = time.split(":");
+  let hour = parseInt(hourStr);
+  const minutes = minuteStr;
+
+  // Determine AM or PM suffix
+  const suffix = hour >= 12 ? "PM" : "AM";
+
+  // Convert hour to 12-hour format
+  hour = hour % 12;
+  hour = hour === 0 ? 12 : hour; // Adjust 0 hour to 12 for midnight
+
+  // Return the formatted time
+  return `${hour}:${minutes} ${suffix}`;
+};
+export {
+  getImage,
+  getSemester,
+  dateDifference,
+  getDate,
+  dateInput,
+  timeConvert,
+};
