@@ -1,4 +1,7 @@
 const Routine = require("../models/routineM.js");
+const examCalender = require("../models/examCalM.js");
+
+// routine control functions ------------------
 
 const addClassRoutine = async (req, res) => {
   try {
@@ -81,9 +84,70 @@ const Query = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+//  exam calender control functions ------------------------
+const addExamCal = async (req, res) => {
+  try {
+    const exam = new examCalender(req.body);
+    await exam.save();
+    res.status(201).json({
+      message: "Exam added successfully",
+    });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+const getExamCal = async (req, res) => {
+  try {
+    const { batch } = req.query;
+    const exams = await examCalender
+      .find(
+        {
+          batch,
+        },
+        {
+          name: 1,
+          date: 1,
+          time: 1,
+          course: 1,
+        }
+      )
+      .populate("course", {
+        CourseCode: 1,
+        CourseTitle: 1,
+      })
+      .sort({
+        date: -1,
+      });
+    // const instructorPath = [];
+    // exams.map((exam) => {
+    //   const rt = exam.course.instructor;
+    //   rt.forEach((_, ins) => {
+    //     instructorPath.push({
+    //       path: `course.instructor.${ins}.teacher`,
+    //       model: "Faculty",
+    //       select:
+    //         "personal.name personal.email personal.phone personal.photo dept_id teacher_id position",
+    //     });
+    //   });
+    // });
+
+    // await Promise.all(
+    //   exams.map(async (exam) => {
+    //     await exam.populate(instructorPath);
+    //   })
+    // );
+    res.status(200).json(exams);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
   addClassRoutine,
   getRoutine,
   add,
   Query,
+  addExamCal,
+  getExamCal,
 };

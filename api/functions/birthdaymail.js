@@ -9,6 +9,7 @@ exports.handler = async (event, context, callback) => {
     statusCode: 200,
     body: JSON.stringify({ message: "Operation started" }),
   });
+  
   try {
     console.log("Sending Mail");
     axios
