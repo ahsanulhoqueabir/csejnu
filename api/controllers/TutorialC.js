@@ -10,16 +10,11 @@ const projection = {
 const addTutorial = async (req, res) => {
   try {
     const newtutorial = new tutorials(req.body);
-    const courseID = await courses.find({ code: newtutorial.code });
 
-    const modified = new tutorials({
-      ...req.body,
-      course: courseID[0]._id,
-    });
-    await modified.save();
+    await newtutorial.save();
     res.status(201).json({
       message: "Tutorial added successfully",
-      data: modified,
+      data: newtutorial,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

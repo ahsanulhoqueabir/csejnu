@@ -9,11 +9,11 @@ const tutorialSchema = new mongoose.Schema(
     },
     code: {
       type: String,
-      required: true,
     },
     course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "courses",
+      required: true,
     },
     classURL: {
       type: String,
