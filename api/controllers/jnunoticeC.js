@@ -2,7 +2,7 @@ const Notices = require("../models/jnunoticeM");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fetchTable = async (req, res) => {
-  const url = "https://jnu.ac.bd/portal/noticeview/1";
+  const url = "https://jnu.ac.bd/newsite/noticeview/1";
   try {
     const response = await axios.get(url);
     const html = response.data;
@@ -11,13 +11,15 @@ const fetchTable = async (req, res) => {
     const data = [];
     table.find("tr").each((i, el) => {
       if (i === 0) return true;
-      const tds = $(el).find("td");
-      const title = tds.eq(2).text();
-      const date = new Date(tds.eq(1).text());
-      const link = tds.eq(3).find("a").attr("href");
+      const title = $(el).find("h5.post-title a").text();
+      const dateText = $(el).find("ul li span.text-theme-colored").text();
+      const date = new Date(dateText);
+      const link = $(el).find("a.btn-theme-colored").attr("href");
       data.push({ title, date, link });
     });
+
     const latest = data.slice(0, 10);
+
     const allPromise = latest.map(async (not) => {
       const notice = await Notices.findOne({ link: not.link });
       if (!notice) {
@@ -29,6 +31,7 @@ const fetchTable = async (req, res) => {
     res.send({
       status: 200,
       message: "Notices Fetched",
+      // notices: latest,
     });
   } catch (err) {
     res.send({
