@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import LoadingPage from "../Shared/LoadingPage";
+import SelectField from "../../components/inputs/SelectField";
+import TextField from "../../components/inputs/TextField";
+import NoteField from "../../components/inputs/NoteField";
 
 const fields = [
   // {
@@ -19,46 +22,49 @@ const fields = [
     type: "text",
     name: "title",
     label: "Note Title",
+    placeholder: "Note Title",
+    isRequired: true,
   },
   {
     type: "select",
     name: "code",
     label: "Course Name",
+    isRequired: true,
     options: [
       {
-        placeholder: "Digital Logic Design",
+        level: "Digital Logic Design",
         value: "CC2103",
       },
       {
-        placeholder: "Digital Logic Design Lab",
+        level: "Digital Logic Design Lab",
         value: "CC2104",
       },
       {
-        placeholder: "Introduction to Statistic and Probability",
+        level: "Introduction to Statistic and Probability",
         value: "CC2106",
       },
       {
-        placeholder: "Data Communication Lab",
+        level: "Data Communication Lab",
         value: "CC2108",
       },
       {
-        placeholder: "Object Oriented Programming-II",
+        level: "Object Oriented Programming-II",
         value: "CC2101",
       },
       {
-        placeholder: "Math- III (Ordinary differential Equation)",
+        level: "Math- III (Ordinary differential Equation)",
         value: "CC2105",
       },
       {
-        placeholder: "Object Oriented Programming-II Lab",
+        level: "Object Oriented Programming-II Lab",
         value: "CC2102",
       },
       {
-        placeholder: "Data Communication",
+        level: "Data Communication",
         value: "CC2107",
       },
       {
-        placeholder: "Financial and Managerial Accounting",
+        level: "Financial and Managerial Accounting",
         value: "CC2109",
       },
     ],
@@ -67,20 +73,28 @@ const fields = [
     type: "text",
     name: "topic",
     label: "Topic Name",
+    placeholder: "Topic Name",
+    isRequired: true,
   },
   {
-    type: "url",
+    type: "file",
     name: "link",
-    label: "Notes URL",
+    label:
+      "(Once you select,it will go through uploading process. So,select carefully!)",
+    placeholder: "Select File",
+    isRequired: true,
   },
 ];
 
 const AddNotes = () => {
+  const [data, setData] = useState();
+  const [files, setFiles] = useState(null);
+  const [folderName, setFolderName] = useState("csejnu");
   const axiosSecure = useAxiosSecure();
   const { loading: authLoading, user } = useAuth();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmitt = (e) => {
     e.preventDefault();
     const form = e.target;
     const data = {};
@@ -118,6 +132,18 @@ const AddNotes = () => {
   if (authLoading) {
     return <LoadingPage />;
   }
+  const handleFileChange = (e) => {
+    setFiles(e.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("file", files);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+  };
 
   return (
     <>
@@ -134,36 +160,15 @@ const AddNotes = () => {
             className="flex flex-col gap-3 text-info-content"
           >
             {fields.map((field) => {
-              return field.type === "select" ? (
-                <div className="space-y-2">
-                  <label className="font-medium">{field.label}</label>
-                  <select
-                    name={field.name}
-                    className="w-full py-2 px-4 focus:outline-none bg-secondary-content rounded"
-                  >
-                    <option selected disabled hidden>
-                      {field.label}
-                    </option>
-                    {field.options.map((option) => {
-                      return (
-                        <option className="bg-base-100" value={option.value}>
-                          {option.placeholder}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <label className=" font-medium">{field.label}</label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    className="w-full placeholder:text-black   py-2 px-4 focus:outline-none bg-secondary-content rounded"
-                    placeholder={field.label}
-                  />
-                </div>
-              );
+              if (field.type === "select") {
+                return <SelectField setData={setData} field={field} />;
+              }
+              if (field.type === "text") {
+                return <TextField setData={setData} field={field} />;
+              }
+              if (field.type === "file") {
+                return <NoteField setData={setData} field={field} />;
+              }
             })}
             <button className="btn bg-info-content text-secondary-content hover:bg-transparent hover:text-info-content transition-colors duration-1000 ease-in-out mt-5 hover:border-info-content">
               {loading ? <Load /> : <span>Submit</span>}

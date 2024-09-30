@@ -1,7 +1,8 @@
 import { getSemester } from "../../../utility/functions";
+import ResultPDF from "./ResultPDF";
 
 let width = screen.width;
-const SemesterResult = ({ data }) => {
+const SemesterResult = ({ data, info }) => {
   const { results } = data;
   return (
     <div className=" w-full select-none">
@@ -35,6 +36,9 @@ const SemesterResult = ({ data }) => {
       <div className="grid lg:grid-cols-2 gap-10 items-start pt-5 justify-between">
         <Summary summary={data.summary} />
         {data.cumulative && <Cumulative cumulative={data.cumulative} />}
+      </div>
+      <div>
+        <ResultPDF info={info} data={data} />
       </div>
     </div>
   );

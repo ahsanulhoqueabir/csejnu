@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "file-management-414502",
+  "private_key_id": "e54f061015e26d8255b2bbd7c1bcf37173718937",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCzwTCsGn+8xHqL\nVlsCvg+CmQRc4hDMOYaXjhO/JHjqQv+MdeT83nb4uxPugU7054CcCbXG/8Tqe7GK\n9zjbo/gH8CtdIoxFkcul5hrJf46rj7oesocfnVdzhFyZ0wltAx3vomqGflgYHpGA\nsmiLo/seE+UUbaciCZqiDNnl4jrptSGABTOUg8hEjHI33Suw/Iq2BiDIVd0QmlNR\nUIENhacx8dqXT/MwMLpj1+L4SAAtz+fQBNy5BLHwWTTDp6uDrQLh56oXiTWSFmF/\nKyP/npTk57THWXrC3oQwMBOwxm7GPhLiG/6Bf9gIbGC8jSyMi/pZD9Z7ceG576Ei\nJeAgauM7AgMBAAECggEAGqNWgyqqI186icuSUSW5RrFGZD1cH+emem8jnf/Zq12i\nYT5XYOHW36VZns6q1MA53uXRelwM4nLSLLXWRzZVW1fMFVE5WFXyx/MBpTqx+dqi\nyknKnHTEsOm8j08m5nC/zvNStfujMm/VQC0wMQFsBVkNaamWSwUBVWJyKA8Oi/N7\n3/1Zon12F1OEcV36LHayRa5nr/doxkIPeN4ejFnzYtw9rn1FttRBVJX5J2LAouA+\nBMy3UPlmd0ptn+blCQHnKBTKJ/JrLg4f19N3obB+Otp61RwOiprBOHGNkpd8gsfX\nSzXndM/gZGwc+hbUag8e0/X1kV5z1auN31gCnrWDgQKBgQDqPgLd8QwwsNJY4I6k\nUIVsg8Giz2G0KF5+62Lu/NR1TtyMu7Qx/T958o862svP6YT5Pjx6u1fSTj1s6QcP\nDDNoe7Fb6UbBlfcW0b9GlmwF3ZiiVaf+aIewbiN1rIJHXFP0w4ttHBVPleT9Gp1y\ngbF1fUc7WaaI/Wi5NSbNTml9ZwKBgQDEc4gyN1AkvGIQxwF3fzrXcD8UKDaQt955\nA02IgsLqRjQTy7cOsTQYJMFV8bs9MUp8kKgCvLUcxKsLe52HYch3IZMH1ch8aEQJ\n/k8zT621863QqZqdfsk7AGUGgCBURRueP/TfjvnKIGFlJ/OP2Cae7PLzgWy9AN2x\nO7U3VcwzDQKBgQDodW3G74ZXc8Lr7L3iFv6x9/dcKU4eycktT0+5ODNnz0FUcJqc\n2WP7E1pM4AFPbcFG0BqY+f5neLnAsWkN59/EmqwiOFi9mKPDg5e8516AW68zuqmi\n8f1me4a5Kt+HDftLdhuRxkLn3iuHergxgL+phw//uDJq1IDu++5r5JsPlQKBgBgS\nzErTCmgmCaJisKRTHAPQhnpS3zTmw0VzCSpEU9xfk/wlB56uSmL3BhYhFD/QbX9M\nPrpvI4aN9yPmFwzDB8zJeXoJUZMlN8k9t7ji97eHT/J1BjRsl/458ydTxiJtgY/n\n6HsIy0VgqG678ZXb+Aebo74BSzDyDTitx2wrgGV1AoGBAOc4rHXCB59eCrbvHf4l\nbtVw8CjiboOb0nIMMscO4cn1w/vz+FaK/OUk236c5z9+RIIZBmoYF/shNDuBmO/w\nfx3+7bF9eeQu1t686GmCqtT7+nbyPuJV4G2ucnSdX1m2SweZtFKhw87DdKhb9EIy\naId1dX0jMBl2PPaB0LKkn8lo\n-----END PRIVATE KEY-----\n",
+  "client_email": "jagannath-university@file-management-414502.iam.gserviceaccount.com",
+  "client_id": "116656153942997726673",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jagannath-university%40file-management-414502.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

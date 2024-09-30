@@ -3,7 +3,7 @@ import SemesterResult from "./SemesterResult";
 import GetIcon from "../../../utility/icons";
 import { getSemester } from "../../../utility/functions";
 
-const Result = ({ results }) => {
+const Result = ({ results, info }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState({
     code: "Choose One",
@@ -64,7 +64,7 @@ const Result = ({ results }) => {
           </div>
         )}
       </div>
-      <SemesterResult data={results[selectedValue.index]} />
+      <SemesterResult data={results[selectedValue.index]} info={info} />
     </div>
   );
 };

@@ -27,7 +27,7 @@ const AcademicInfo = ({ info }) => {
         </TabPanel>
         <TabPanel>
           <div className="flex">
-            <Result results={info.results} />
+            <Result info={info} results={info.results} />
           </div>
         </TabPanel>
       </Tabs>

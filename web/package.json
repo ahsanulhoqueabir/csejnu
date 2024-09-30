@@ -1,5 +1,5 @@
 {
-  "name": "bookshop",
+  "name": "ambiguity-13-web-application",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -22,6 +22,8 @@
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
     "firebase": "^10.7.1",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.3",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",

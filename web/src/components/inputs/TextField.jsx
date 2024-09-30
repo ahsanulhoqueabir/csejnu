@@ -6,7 +6,7 @@ const TextField = ({ setData, field }) => {
     }));
   };
   return (
-    <div className={`space-y-2 text-sm`}>
+    <div className={`space-y-2 `}>
       <label className=" font-medium font-philosopher text-xl">
         {field.label}
         {field.isRequired && <span className="text-red-500">*</span>}
