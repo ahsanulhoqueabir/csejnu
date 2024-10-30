@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import LoadingPage from "./Shared/LoadingPage";
 import Banner from "../components/Banner";
-import usePrivateFetch from "../hooks/fetch/usePrivateFetch";
+import usePublicFetch from "../hooks/fetch/usePublicFetch";
 import { getSemester } from "../utility/functions";
 
 const QuestionBank = () => {
-  const { loading: qLoading, data, error } = usePrivateFetch("/qbank");
+  const { loading: qLoading, data, error } = usePublicFetch("/qbank");
   const [QB, setQB] = useState(data || []);
   useEffect(() => {
     setQB(data);

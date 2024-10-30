@@ -240,7 +240,7 @@ const routes = [
         icon: "FaQuestion",
         pack: "fa",
         path: "/academic/question-bank",
-        isProtected: true,
+        isProtected: false,
       },
     ],
   },

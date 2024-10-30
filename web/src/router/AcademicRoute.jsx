@@ -58,11 +58,7 @@ const routes = [
   },
   {
     path: "question-bank",
-    element: (
-      <PrivateRoute>
-        <QuestionBank />
-      </PrivateRoute>
-    ),
+    element: <QuestionBank />,
   },
   {
     path: "tutorial-online",
