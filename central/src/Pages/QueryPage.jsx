@@ -1,16 +1,11 @@
-import Order from "../Components/Query/Order";
-import SearchField from "../Components/Query/SearchField";
-import SelectBatch from "../Components/Query/SelectBatch";
 import { setTitle } from "../utilities/functions";
 const QueryPage = () => {
   setTitle("Query Student");
   return (
     <div>
-      <div className="flex gap-4">
-        <Order />
-        <SelectBatch />
-        <SearchField />
-      </div>
+      <p className=" text-center flex justify-center items-center text-xl lg:text-3xl min-h-[calc(100vh-200px)]">
+        Available soooooooon!
+      </p>
     </div>
   );
 };

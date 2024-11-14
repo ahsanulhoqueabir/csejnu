@@ -3,7 +3,14 @@ const Student = require("../models/StudentM.js");
 
 const add = async (req, res) => {
   try {
-    const result = new Result(req.body);
+    const { studentId } = req.body;
+    const currStd = await Student.findOne({
+      id: studentId,
+    });
+    const result = new Result({
+      ...req.body,
+      student: currStd._id,
+    });
     const newResult = await result.save();
     await Student.findOneAndUpdate(
       {
@@ -23,7 +30,14 @@ const add = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
+const assessment = async (req, res) => {
+  try {
+    const { id, semester } = req.query;
+    // const rs = await
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
 const addMany = async (req, res) => {
   try {
     const data = req.body;

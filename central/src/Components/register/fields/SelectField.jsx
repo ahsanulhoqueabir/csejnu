@@ -35,7 +35,6 @@ const SelectField = ({ setData, field }) => {
       <select
         onChange={handleChange}
         name={field.name}
-        // required={field.isRequired}
         required={field.isRequired}
         value={value}
         className="w-full placeholder:text-info-content text-info-content bg-base-300 px-4 py-1 rounded-md   focus:outline-none"
@@ -45,8 +44,8 @@ const SelectField = ({ setData, field }) => {
         </option>
         {field.options.map((option, index) => {
           return (
-            <option key={index} className="bg-base-100" value={option}>
-              {option}
+            <option key={index} className="bg-base-100" value={option.value}>
+              {option.label}
             </option>
           );
         })}

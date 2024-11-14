@@ -27,6 +27,13 @@ const resultSchema = new mongoose.Schema(
         lg: {
           type: String,
         },
+        assessment: {
+          mid1: { type: Number },
+          mid2: { type: Number },
+          mid3: { type: Number },
+          attendence: { type: Number },
+          assignment: { type: Number },
+        },
       },
     ],
     summary: {

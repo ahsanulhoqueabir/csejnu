@@ -17,7 +17,7 @@ const StudentProfile = () => {
   useEffect(() => {
     if (user && !authLoading) {
       axiosPublic
-        .get(`/students/profile?email=${"lamiya755755@gmail.com"}`)
+        .get(`/students/profile?email=${"contact.ahsanul@gmail.com"}`)
         .then((res) => {
           setData(res.data);
           //   console.log(res.data);

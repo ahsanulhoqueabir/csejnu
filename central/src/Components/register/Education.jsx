@@ -53,16 +53,54 @@ const fields = [
     type: "select",
     label: "Education Board(Collge)",
     placeholder: "Education Board(Collge)",
+    // options: [
+    //   "Barishal",
+    //   "Chattogram",
+    //   "Cumilla",
+    //   "Dhaka",
+    //   "Dinajpur",
+    //   "Jashore",
+    //   "Rajshahi",
+    //   "Mymensingh",
+    //   "Sylhet",
+    // ],
     options: [
-      "Barishal",
-      "Chattogram",
-      "Cumilla",
-      "Dhaka",
-      "Dinajpur",
-      "Jashore",
-      "Rajshahi",
-      "Mymensingh",
-      "Sylhet",
+      {
+        label: "Barishal",
+        value: "Barishal",
+      },
+      {
+        label: "Chattogram",
+        value: "Chattogram",
+      },
+      {
+        label: "Cumilla",
+        value: "Cumilla",
+      },
+      {
+        label: "Dhaka",
+        value: "Dhaka",
+      },
+      {
+        label: "Dinajpur",
+        value: "Dinajpur",
+      },
+      {
+        label: "Jashore",
+        value: "Jashore",
+      },
+      {
+        label: "Rajshahi",
+        value: "Rajshahi",
+      },
+      {
+        label: "Mymensingh",
+        value: "Mymensingh",
+      },
+      {
+        label: "Sylhet",
+        value: "Sylhet",
+      },
     ],
     isRequired: true,
   },
@@ -93,15 +131,42 @@ const fields = [
     label: "Education Board(School)",
     placeholder: "Education Board(School)",
     options: [
-      "Barishal",
-      "Chattogram",
-      "Cumilla",
-      "Dhaka",
-      "Dinajpur",
-      "Jashore",
-      "Rajshahi",
-      "Mymensingh",
-      "Sylhet",
+      {
+        label: "Barishal",
+        value: "Barishal",
+      },
+      {
+        label: "Chattogram",
+        value: "Chattogram",
+      },
+      {
+        label: "Cumilla",
+        value: "Cumilla",
+      },
+      {
+        label: "Dhaka",
+        value: "Dhaka",
+      },
+      {
+        label: "Dinajpur",
+        value: "Dinajpur",
+      },
+      {
+        label: "Jashore",
+        value: "Jashore",
+      },
+      {
+        label: "Rajshahi",
+        value: "Rajshahi",
+      },
+      {
+        label: "Mymensingh",
+        value: "Mymensingh",
+      },
+      {
+        label: "Sylhet",
+        value: "Sylhet",
+      },
     ],
     isRequired: true,
   },

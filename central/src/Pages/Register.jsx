@@ -8,7 +8,6 @@ import SocialMedia from "../Components/register/SocialMedia";
 const Register = () => {
   const axiosPublic = useAxiosPublic();
   const [data, setData] = useState({
-    batch: "B220305",
     department: "66b88999bfc8b7b111d40a9e",
     education: [
       {

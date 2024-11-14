@@ -249,13 +249,33 @@ const batchwise = async (req, res) => {
     });
     // .limit(limit)
     // .skip(skip);
+
     if (!students) {
       res.status(404).json({
         message: "Data not found",
       });
       return;
     }
-    res.status(200).json(students);
+    if (students.length && req.query.batch === "B210305") {
+      let nwstds = [];
+      students.find((st) => {
+        if (st.id === "B210305040") {
+          nwstds.push(st);
+        }
+      });
+      students.find((st) => {
+        if (st.id === "B210305021") {
+          nwstds.push(st);
+        }
+      });
+      students.map((st) => {
+        if (st.id !== "B210305040" && st.id !== "B210305021") {
+          nwstds.push(st);
+        }
+      });
+      res.status(200).json(nwstds);
+    }
+    // res.status(200).json(students);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }

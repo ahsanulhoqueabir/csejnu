@@ -31,6 +31,17 @@ export default Personal;
 
 const fields = [
   {
+    type: "select",
+    name: "batch",
+    placeholder: "Select Your Batch",
+    options: [
+      { value: "B230305", label: "15th Batch" },
+      { value: "B220305", label: "14th Batch" },
+    ],
+    label: "Select Your Batch",
+    isRequired: true,
+  },
+  {
     name: "id",
     type: "text",
     placeholder: "Enter Your Student ID",
@@ -69,7 +80,16 @@ const fields = [
     name: "personal.blood",
     type: "select",
     placeholder: "Enter blood group",
-    options: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
+    options: [
+      { value: "A+", label: "A+" },
+      { value: "A-", label: "A-" },
+      { value: "B+", label: "B+" },
+      { value: "B-", label: "B-" },
+      { value: "O+", label: "O+" },
+      { value: "O-", label: "O-" },
+      { value: "AB+", label: "AB+" },
+      { value: "AB-", label: "AB-" },
+    ],
     label: "Blood Group",
     isRequired: true,
   },
@@ -98,7 +118,14 @@ const fields = [
     name: "personal.religion",
     type: "select",
     placeholder: "Enter religion",
-    options: ["Islam", "Hindu", "Christianity", "Buddhism", "Others"],
+    // options: ["Islam", "Hindu", "Christianity", "Buddhism", "Others"],
+    options: [
+      { value: "Islam", label: "Islam" },
+      { value: "Hindu", label: "Hindu" },
+      { value: "Christianity", label: "Christianity" },
+      { value: "Buddhism", label: "Buddhism" },
+      { value: "Others", label: "Others" },
+    ],
     label: "Religion",
     isRequired: true,
   },
@@ -106,7 +133,17 @@ const fields = [
     name: "personal.gender",
     type: "select",
     placeholder: "Select Gender",
-    options: ["M", "F"],
+    // options: ["M", "F"],
+    options: [
+      {
+        value: "M",
+        label: "Male",
+      },
+      {
+        value: "F",
+        label: "Female",
+      },
+    ],
     label: "Gender",
     isRequired: true,
   },
