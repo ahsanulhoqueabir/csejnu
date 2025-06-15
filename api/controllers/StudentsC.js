@@ -268,6 +268,7 @@ const batchwise = async (req, res) => {
           nwstds.push(st);
         }
       });
+<<<<<<< HEAD
       students.find((st) => {
         if (st.id === "B210305028") {
           nwstds.push(st);
@@ -280,6 +281,10 @@ const batchwise = async (req, res) => {
           st.id !== "B210305021" &&
           st.id !== "B210305028"
         ) {
+=======
+      students.map((st) => {
+        if (st.id !== "B210305040" && st.id !== "B210305021") {
+>>>>>>> b5fdd807db0bbdde344b5f36bf5d7e9de6b3b4ca
           nwstds.push(st);
         }
       });

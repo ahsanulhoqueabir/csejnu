@@ -2,5 +2,9 @@ db/
 server/
 server
 db
+<<<<<<< HEAD
 .vscode
 qb/
+=======
+.vscode
+>>>>>>> b5fdd807db0bbdde344b5f36bf5d7e9de6b3b4ca
