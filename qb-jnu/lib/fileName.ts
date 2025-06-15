@@ -89,6 +89,11 @@ const fileNames: { [key: string]: string } = {
   b20m1: "20th Batch,1st Mid",
   b20m2: "20th Batch,2nd Mid",
   b20m3: "20th Batch,3rd Mid",
+  ca: "Computer Architecture and Organization",
+  na: "Numerical Analysis",
+  daa: "Design and Analysis of Algorithms",
+  "math-iv":
+    "Complex Variables, Fourier Series, Vector Analysis and Laplace Transform",
 };
 
 export const getFileName = (key: string): string => {

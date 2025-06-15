@@ -29,7 +29,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
         >
           {open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
           {open ? <FolderOpen size={16} /> : <Folder size={16} />}
-          <span className="font-medium">
+          <span className="font-medium text-sm">
             {getFileName(item.name.toLowerCase())}
           </span>
         </button>
@@ -39,7 +39,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="ml-4 overflow-hidden"
+              className="ml-4 overflow-hidden "
             >
               {item.children?.map((child) => (
                 <TreeItem key={child.path} item={child} />
@@ -58,7 +58,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
       >
         <FileText size={14} />
         {/* <span>{item.name.replace(".md", "")}</span> */}
-        <span className="font-medium">
+        <span className="font-medium ">
           {getFileName(item.name.replace(".md", "").toLowerCase())}
         </span>
       </Link>

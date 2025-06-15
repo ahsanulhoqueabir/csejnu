@@ -65,6 +65,30 @@
   font-size: 1.1em;
 }
 
+/* Ensure KaTeX block formulas wrap on small screens */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+.katex-display>.katex {
+  white-space: nowrap;
+}
+
+.katex-display::-webkit-scrollbar {
+  height: 2px;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background: #4dbed5;
+  border-radius: 1px;
+}
+
+.katex-display::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .prose img {
   border-radius: 0.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
