@@ -29,7 +29,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
         >
           {open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
           {open ? <FolderOpen size={16} /> : <Folder size={16} />}
-          <span className="font-medium text-sm">
+          <span className="font-medium text-sm whitespace-nowrap overflow-hidden text-ellipsis">
             {getFileName(item.name.toLowerCase())}
           </span>
         </button>
