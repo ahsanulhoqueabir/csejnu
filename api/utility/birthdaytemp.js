@@ -1,15 +1,18 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const BirthdayTemp = ({ student, message }) => {
   const { personal } = student;
   const { email, name } = personal;
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: process.env.SMTP_HOST,
     port: 587,
     secure: false,
     auth: {
-      user: "cr.csejnu@gmail.com",
-      pass: "bitz ncic pege trpa",
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
     tls: {
       rejectUnauthorized: false,
