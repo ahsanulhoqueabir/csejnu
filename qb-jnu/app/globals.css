@@ -89,20 +89,51 @@
   background: #555;
 }
 
-.prose img {
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  margin: 1rem 0;
+/* GLOBAL OVERRIDES FOR TAILWIND TYPOGRAPHY */
+
+.prose h1 {
+  @apply text-4xl font-bold text-blue-700 dark:text-blue-400;
+}
+
+.prose h2 {
+  @apply text-xl lg:text-3xl font-semibold text-teal-700 dark:text-teal-400;
+}
+
+.prose h3 {
+  @apply text-lg lg:text-2xl text-slate-800 dark:text-slate-300;
+}
+
+.prose p {
+  @apply text-base text-gray-800 dark:text-gray-200 leading-relaxed;
+}
+
+/* Tailwind Typography Table Styling + Alternating Rows */
+
+.prose table {
+  @apply w-full border-collapse table-auto text-left text-sm overflow-x-auto;
+}
+
+.prose thead {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100;
+}
+
+.prose th,
+.prose td {
+  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+}
+
+.prose tbody tr:nth-child(even) {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+.prose tbody tr:nth-child(odd) {
+  @apply bg-white dark:bg-gray-800;
 }
 
 .prose code {
-  background-color: #f3f4f6;
-  padding: 0.2em 0.4em;
-  border-radius: 0.3rem;
+  @apply bg-gray-100 dark:bg-gray-800 text-pink-600 px-1 rounded;
 }
 
-.prose pre code {
-  background: none;
-  padding: 0;
-  border-radius: 0;
+.prose pre {
+  @apply bg-gray-900 text-white p-4 rounded-md overflow-x-auto;
 }
