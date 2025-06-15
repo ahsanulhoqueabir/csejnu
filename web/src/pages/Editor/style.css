@@ -1,0 +1,46 @@
+/* src/styles.css */
+
+.custom-header-one {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-header-two {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.custom-unordered-list-item {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.custom-ordered-list-item {
+  margin-left: 20px;
+  list-style-type: decimal;
+}
+
+.editor-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+}
+
+.toolbar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  margin-right: 5px;
+  padding: 5px 10px;
+}
+
+.editor {
+  min-height: 300px;
+}

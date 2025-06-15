@@ -1,0 +1,10 @@
+const express = require("express");
+const result = require("../controllers/resultC.js");
+const router = express.Router();
+router.post("/add", result.add);
+router.post("/addMany", result.addMany);
+router.get("/", result.getResults);
+router.get("/:id", result.getOneResult);
+router.put("/update/:id", result.updateResult);
+router.delete("/delete/:id", result.deleteResult);
+module.exports = router;

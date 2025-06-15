@@ -1,0 +1,129 @@
+import { useNavigate } from "react-router-dom";
+import SMCP from "../../../../web/src/utility/iconname";
+import { getImage } from "../../utilities/functions";
+import GetIcon from "../../utilities/Icon";
+import "./style.css";
+
+const Student = ({ student }) => {
+  const navigate = useNavigate();
+
+  const { id, personal } = student;
+  // const social = [...student.social, ...student.codingProfile];
+  const social = {
+    ...student.profiles?.social,
+    ...student.profiles?.coding,
+  };
+  return (
+    <div className="flex w-full student-card h-[550px] flex-col items-center justify-center  rounded-xl bg-accent-content p-4 shadow-lg text-info-content">
+      <Header personal={personal} id={id} />
+      {/* bio  */}
+      <div className="h-[350px] overflow-y-auto no-scrollbar">
+        <div
+          className="text-justify px-2 line-clamp-[8]	"
+          dangerouslySetInnerHTML={{
+            __html: personal?.about
+              ? personal.about
+              : "Being a student, my academic journey sharpened me with excellent programming and problem-solving skills and in-depth knowledge of algorithms and data structures. My areas of interest are software development, artificial intelligence, and cybersecurity. I have practical experience in application building and hands-on working experience with state-of-the-art technologies through projects and internships. Looking forward to learning, contributing towards meaningful projects, and growing as a professional in the tech industry.(AI)",
+          }}
+        ></div>
+      </div>
+      {/* social icons  */}
+      <div className="flex justify-between gap-4 py-1 pb-2">
+        {/* {social.slice(0, 5).map((prof, index) => (
+          <Account key={index} profile={prof} />
+        ))} */}
+        {Object.keys(social)
+          .slice(0, 5)
+          .map((prof, index) => (
+            <Account key={index} profile={social[prof]} />
+          ))}
+      </div>
+      <div className="flex justify-center w-full">
+        <button
+          onClick={() => {
+            navigate(`/students/details/${id}`);
+          }}
+          className="w-[90%] rounded-full py-2 font-medium text-gray-400 shadow-[0px_0px_10px_#E2DADA] duration-500  hover:scale-95 hover:bg-success hover:text-white hover:shadow-xl dark:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.8)]"
+        >
+          View Profile
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Student;
+
+const Account = ({ profile }) => {
+  const info = SMCP[profile.platform];
+  const regex = /^https?:\/\/www\./;
+  const url = info?.base.replace(regex, "");
+  const link =
+    profile.link?.trim() || profile.handle?.trim() || profile.username?.trim();
+  return (
+    <li className="flex items-center gap-2 w-full ">
+      <a
+        href={`${info.base}${link}`}
+        target="blank"
+        className="p-2 bg-accent-content rounded-full"
+      >
+        <GetIcon
+          className={"text-4xl text-success 2 rounded-full   animate-pulse"}
+          icon={`${info.icon.trim()}`}
+          lib={info.pack}
+        />
+      </a>
+      {/* <p className="">{link}</p> */}
+    </li>
+  );
+};
+
+const Header = ({ personal, id }) => {
+  const { gender } = personal;
+  return (
+    <>
+      <div className="group relative  ">
+        <img
+          onClick={() => document.getElementById(id).showModal()}
+          width={110}
+          height={110}
+          className="h-[110px] w-[110px] rounded-full bg-slate-500 object-cover"
+          src={
+            personal?.photo
+              ? personal.photo
+              : gender === "M"
+              ? getImage("photo", "studentM.jpeg")
+              : getImage("photo", "studentF.jpeg")
+          }
+          alt={personal?.name.fullName}
+        />
+
+        {/* modal  */}
+        <dialog id={id} className="modal">
+          <div className="modal-box size-80 lg:size-96 p-0 shadow-md shadow-teal-200 no-scrollbar">
+            <img
+              className="size-80 lg:size-96 aspect-square object-cover"
+              src={
+                personal?.photo
+                  ? personal.photo
+                  : gender === "M"
+                  ? getImage("photo", "studentM.jpeg")
+                  : getImage("photo", "studentF.jpeg")
+              }
+              // alt={info.personal?.name?.nickname}
+            />{" "}
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button></button>
+          </form>
+        </dialog>
+      </div>
+      <div className="space-y-1 text-center pb-2">
+        <h1 className="pt-2 lg:text-xl font-playwrite">
+          {personal?.name?.fullName}
+        </h1>
+        <p className="text-sm text-gray-400">CSE undergrad</p>
+      </div>
+    </>
+  );
+};
