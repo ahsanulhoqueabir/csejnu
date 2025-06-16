@@ -8,16 +8,19 @@ import {
   Folder,
   FolderOpen,
   FileText,
-  FileJson,
-  File,
-  FileArchive,
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
 
 import { getFileName } from "@/lib/fileName";
 
-export function TreeItem({ item }: { item: GitHubItem }) {
+export function TreeItem({
+  item,
+  directory,
+}: {
+  item: GitHubItem;
+  directory: string;
+}) {
   const [open, setOpen] = useState(false);
 
   if (item.type === "dir") {
@@ -42,7 +45,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
               className="ml-4 overflow-hidden "
             >
               {item.children?.map((child) => (
-                <TreeItem key={child.path} item={child} />
+                <TreeItem key={child.path} item={child} directory={directory} />
               ))}
             </motion.div>
           )}
@@ -53,7 +56,7 @@ export function TreeItem({ item }: { item: GitHubItem }) {
     const slug = item.path.replace(/\.md$/, "").split("/");
     return (
       <Link
-        href={`/questions/${slug.join("/")}`}
+        href={`/${directory}/${slug.join("/")}`}
         className="flex items-center ml-6 space-x-2 text-sm hover:underline"
       >
         <FileText size={14} />

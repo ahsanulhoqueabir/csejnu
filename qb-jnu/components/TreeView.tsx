@@ -5,7 +5,13 @@ import { Input } from "@/components/ui/input";
 import { TreeItem } from "@/components/TreeItem";
 import { GitHubItem } from "@/lib/githubTree";
 
-export default function Home({ tree }: { tree: GitHubItem[] }) {
+export default function TreeView({
+  tree,
+  directory,
+}: {
+  tree: GitHubItem[];
+  directory: string;
+}) {
   const [search, setSearch] = useState("");
 
   return (
@@ -19,7 +25,7 @@ export default function Home({ tree }: { tree: GitHubItem[] }) {
       />
       <div className="border rounded p-4 bg-background">
         {tree.map((item) => (
-          <TreeItem key={item.path} item={item} />
+          <TreeItem key={item.path} item={item} directory={directory} />
         ))}
       </div>
     </main>

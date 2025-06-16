@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between mb-5">
         <Link href="/" className="flex items-center space-x-2">
           <div className="flex items-center">
-            <Image src={logo} alt="logo" className="size-12" />
+            <Image priority src={logo} alt="logo" className="size-12" />
           </div>
         </Link>
 

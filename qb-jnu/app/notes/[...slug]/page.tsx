@@ -1,6 +1,5 @@
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
-import { GitHubItem } from "@/lib/githubTree";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -11,12 +10,13 @@ import rehypeStringify from "rehype-stringify";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
-import { getFileName } from "@/lib/fileName";
+import PageHeader from "@/components/common/PageHeader";
+import extractPath from "@/lib/extractPath";
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page(props: { params: { slug: string[] } }) {
+  const { params } = await Promise.resolve(props);
   const path = params.slug.join("/") + ".md";
-  const name = params.slug.at(-1);
-  const url = `https://raw.githubusercontent.com/cse-jnu/qb/main/${path}`;
+  const url = `https://raw.githubusercontent.com/cse-jnu/notes/main/${path}`;
 
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) return notFound();
@@ -35,12 +35,11 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     .use(rehypeStringify)
     .process(content);
 
+  const headerDetails = extractPath(path);
+
   return (
     <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">
-        {getFileName(data.title ?? "") ||
-          getFileName(name?.toLocaleLowerCase() ?? "")}
-      </h1>
+      <PageHeader data={headerDetails} />
       <div dangerouslySetInnerHTML={{ __html: processedContent.toString() }} />
     </div>
   );

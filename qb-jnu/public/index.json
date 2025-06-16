@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Question Bank JNU",
+    "description": "A collection of questions and answers for JNU CSE Departments.",
+    "url": "https://github.com/cse-jnu/qb",
+    "image": "https://res.cloudinary.com/dz0wrvosv/image/upload/v1750092585/ChatGPT_Image_Jun_16_2025_10_47_32_PM_1_j5xnno.png",
+    "tags": ["JNU", "Question Bank", "CSE"],
+    "type": "github",
+    "owner": "cse-jnu",
+    "repo": "qb",
+    "branch": "main",
+    "path": "qb"
+  },
+  {
+    "title": "Notes",
+    "description": " A collection of notes for JNU on different courses.",
+    "url": "https://github.com/cse-jnu/qb",
+    "image": "https://res.cloudinary.com/dz0wrvosv/image/upload/v1750092674/ChatGPT_Image_Jun_16_2025_10_50_33_PM_1_c7kjko.png",
+    "tags": ["JNU", "Question Bank", "CSE"],
+    "type": "github",
+    "owner": "cse-jnu",
+    "repo": "notes",
+    "branch": "main",
+    "path": "notes"
+  }
+]

@@ -5,13 +5,13 @@ export interface GitHubItem {
   children?: GitHubItem[];
 }
 
-const GITHUB_OWNER = "cse-jnu";
-const GITHUB_REPO = "qb";
-const BRANCH = "main";
-
-export async function fetchGitHubTree(path = ""): Promise<GitHubItem[]> {
+export async function fetchGitHubTree(
+  path: "",
+  owner: string,
+  repo: string
+): Promise<GitHubItem[]> {
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
+    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
     {
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -26,7 +26,7 @@ export async function fetchGitHubTree(path = ""): Promise<GitHubItem[]> {
   const result: GitHubItem[] = await Promise.all(
     items.map(async (item) => {
       if (item.type === "dir") {
-        const children = await fetchGitHubTree(item.path);
+        const children = await fetchGitHubTree(item.path, owner, repo);
         return { ...item, children };
       }
       return item;
