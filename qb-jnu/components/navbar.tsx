@@ -9,11 +9,10 @@ import { ModeToggle } from "./mode-toggle";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-import logo from "@/public/logo.svg";
-
 const routes = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
+  { name: "QB", path: "/qb" },
+  { name: "Notes", path: "/notes" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
@@ -44,7 +43,14 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between mb-5">
         <Link href="/" className="flex items-center space-x-2">
           <div className="flex items-center">
-            <Image priority src={logo} alt="logo" className="size-12" />
+            <Image
+              priority
+              src={
+                "https://res.cloudinary.com/dz0wrvosv/image/upload/v1750103594/ChatGPT_Image_Jun_17_2025_01_52_13_AM_1_kags1n.png"
+              }
+              alt="logo"
+              className="size-12"
+            />
           </div>
         </Link>
 
